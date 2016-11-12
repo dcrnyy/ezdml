@@ -1,0 +1,11 @@
+Id(编号)                  PKInteger
+Pid(父编号)               Integer
+Rid(关联编号)             FKInteger
+Name(名称)                String
+Memo(注释)                String
+TypeName(类名)            String
+CreatorId(创建人编号)     Integer
+CreatorName(创建人姓名)   String
+CreateDate(创建日期)      Date
+DataLevel(数据级别)       Enum        //0正常 1审核中 2被否决 -1已删除 -2草稿
+OrderNo(排序号)           Float

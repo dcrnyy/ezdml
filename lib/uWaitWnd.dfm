@@ -1,0 +1,59 @@
+object frmWaitWnd: TfrmWaitWnd
+  Left = 260
+  Top = 192
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Processing...'
+  ClientHeight = 107
+  ClientWidth = 360
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 12
+  object LabelPrompt: TLabel
+    Left = 8
+    Top = 64
+    Width = 345
+    Height = 24
+    AutoSize = False
+    Caption = 'Processing...'
+    WordWrap = True
+  end
+  object btnCancel: TButton
+    Left = 289
+    Top = 8
+    Width = 64
+    Height = 21
+    Cancel = True
+    Caption = 'Cancel'
+    TabOrder = 0
+    TabStop = False
+    OnClick = btnCancelClick
+  end
+  object Animate1: TAnimate
+    Left = 4
+    Top = 4
+    Width = 272
+    Height = 60
+    CommonAVI = aviCopyFile
+    StopFrame = 20
+  end
+  object ProgressBar1: TProgressBar
+    Left = 8
+    Top = 88
+    Width = 341
+    Height = 13
+    Max = 1000
+    TabOrder = 2
+  end
+end

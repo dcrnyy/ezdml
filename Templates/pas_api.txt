@@ -1,0 +1,415 @@
+{
+   PASCAL SCRIPT
+
+   CtMetaData, CtMetaTable
+}
+unit DmlTablePS;
+
+interface
+
+type
+  TCtObject = class;
+  TCtObjectList = class;
+  TCtGlobList = class;
+  
+  TCTMetaFieldList = class;
+  TCtMetaTableList = class;
+  TCtDataModelGraph = class;
+  TCtDataModelGraphList = class;
+          
+
+  TList = class(TObject)
+  private
+  protected
+  public
+    destructor Destroy; override;
+    function Add(Item: TObject): Integer;
+    procedure Clear; virtual;
+    procedure Delete(Index: Integer);
+    procedure Exchange(Index1, Index2: Integer);
+    function IndexOf(Item: TObject): Integer;
+    procedure Insert(Index: Integer; Item: TObject);
+    procedure Move(CurIndex, NewIndex: Integer);
+    function Remove(Item: TObject): Integer;
+    procedure Pack;
+    procedure Sort(Compare: TListSortCompare);
+    property Capacity: Integer read FCapacity write SetCapacity;
+    property Count: Integer read FCount write SetCount;
+    property Items[Index: Integer]: TObject read Get write Put; default;
+  end;
+  
+               
+  //CT数据级别
+  TctDataLevel = (ctdlUnknown, ctdlNormal, ctdlNew, ctdlModify, ctdlDeleted, ctdlDraft, ctdlDebug);
+  
+  //CT对象基类，包含基本属性和串行化接口
+  //guid:{E8D33D36-66DF-4568-8537-F24A1EDE0588}
+  TCtObject = class(TObject)
+  private
+  protected
+  public
+    constructor Create; virtual;
+    destructor Destroy; override;
+
+    //排序
+    procedure SortByOrderNo; virtual;
+
+    //状态保存恢复接口
+    procedure Reset; virtual;
+    procedure AssignFrom(ACtObj: TCtObject); virtual;
+    procedure LoadFromFile(fn: string); virtual;
+    procedure SaveToFile(fn: string); virtual;
+
+    //基本属性：ID PID RID 名称 别名 类型 注释 创建时间和创建人 最后修改时间和修改人 数据级别
+    property ID: Integer read FID write FID;
+    property PID: Integer read FPID write FPID;
+    property RID: Integer read FRID write FRID;
+    property Name: string read FName write FName;
+    property Caption: string read FCaption write SetCaption;
+    property TypeName: string read FTypeName write FTypeName;
+    property Memo: string read FMemo write FMemo;
+    property DisplayText: string read GetDisplayText;
+
+    property CreateDate: TDateTime read FCreateDate write FCreateDate;
+    property Creator: Integer read FCreator write FCreator;
+    property CreatorName: string read FCreatorName write FCreatorName;
+    property ModifyDate: TDateTime read FModifyDate write FModifyDate;
+    property Modifier: Integer read FModifier write FModifier;
+    property ModifierName: string read FModifierName write FModifierName;
+
+    property DataLevel: TctDataLevel read FDataLevel write FDataLevel;
+    //排序号
+    property OrderNo: Double read FOrderNo write FOrderNo;
+
+    property SubItems: TCtObjectList read GetSubitems write FSubitems;
+    property HasSubItems: Boolean read GetHasSubItems;
+    //父列表
+    property ParentList: TCtObjectList read FParentList write FParentList;
+    //所有对象全局列表
+    property GlobeList: TCtGlobList read FGlobeList write SetGlobeList;
+    //用户自定义对象
+    property UserObjectList: TStrings read GetUserObjectList;
+    property UserObjectCount: Integer read GetUserObjectCount;
+    property UserObject[Index: string]: TObject read GetUserObject write SetUserObject;
+    //参数转为TSTRINGS
+    property ParamList: TStrings read GetParamList;
+    property Param[Name: string]: string read GetParam write SetParam;
+  end;
+
+  { 自释放列表 }
+  TCtAutoFreeList = class(TList)
+  protected
+  public
+    constructor Create; virtual;
+    destructor Destroy; override;
+
+    //自动FREE
+    property AutoFree: Boolean read FAutoFree write FAutoFree;
+  end;
+
+  TCtGlobList = class(TCtAutoFreeList)
+  private
+  protected
+  public
+  end;
+
+  //CT对象列表，可新建、自动FREE，保存数据流，展开子项
+  TCtObjectList = class(TCtGlobList)
+  private
+  protected
+  public
+    constructor Create; override;
+    destructor Destroy; override;
+
+    //状态保存恢复接口
+    procedure AssignFrom(ACtObj: TCtObjectList); virtual;
+
+    ///新建对象 ××××××××××××××注意：子类必须仍然保留使用此方法创建对象×××××××××××
+    function NewObj: TCtObject; virtual;
+    //展开子项
+    procedure ExpandItem(AItem: TCtObject); virtual;
+    //子项释放通知
+    procedure NotifyChildFree(AItem: TCtObject); virtual;
+    //创建全局列表，这样一个列表中就记录了同一棵树下的所有节点
+    function CreateGlobeList: TCtGlobList; virtual;
+    //获取子项
+    function ItemByID(AID: Integer): TCtObject; virtual;
+    function ItemByName(AName: string; bCaseSensive: Boolean = False): TCtObject; virtual;
+    function NameOfID(AID: Integer): string; virtual;
+
+    //删除无效节点
+    procedure Pack; virtual;
+    //仅删除（不FREE）
+    procedure MereRemove(AItem: TCtObject); virtual;
+    //排序
+    procedure SortByOrderNo; virtual;
+    //保存当前顺序
+    procedure SaveCurrentOrder; virtual;
+
+    property Items[Index: Integer]: TCtObject read GetCtItem write PutCtItem; default;
+    //子类
+    property ItemClass: TCtObjectClass read FItemClass write FItemClass;
+    //所有对象全局列表
+    //这样一个全局列表中记录了同一棵树下的所有节点
+    property GlobeList: TCtGlobList read FGlobeList write FGlobeList;
+  end;
+
+  TCtMetaObject = class(TCtObject)
+  private
+  public
+    property MetaModified: Boolean read GetMetaModified write SetMetaModified;
+    property IsSelected: Boolean read FIsSelected write FIsSelected; //是否被选中
+  end;
+
+  TCtMetaObjectList = class(TCtObjectList)
+  end;
+
+  { CT数据表 }
+  //注意：TYPENAME为空或TABLE时才是表，为TEXT时是纯文字
+  //为FUNCTION、PROCEDURE、PACKAGE时为存储过程
+  //为DATASQL时表示插入数据的初始化SQL
+  TCtMetaTable = class(TCtMetaObject)
+  private
+  protected
+  public
+    constructor Create; override;
+    destructor Destroy; override;
+
+    //状态保存恢复接口
+    procedure Reset; override;
+    procedure AssignFrom(ACtObj: TCtObject); override;
+
+    function GetTableComments: string; virtual;
+
+    function GenSqlEx(bCreatTb: Boolean; bFK: Boolean; dbType: string = ''): string; virtual;
+    function GenSql(dbType: string = ''): string; virtual;
+    function GenSqlWithoutFK: string; virtual;
+    function GenFKSql: string; virtual;
+    function GenDqlDmlSql(dbType: string = ''): string; virtual;
+
+    property OwnerList: TCtMetaTableList read FOwnerList;
+
+    //CT编号
+    property CellTreeId: Integer read FCellTreeId write FCellTreeId;
+    //图形描述
+    property GraphDesc: string read FGraphDesc write FGraphDesc;
+
+    //元字段列表
+    property MetaFields: TCTMetaFieldList read GetMetaFields;
+    property KeyFieldName: string read GetKeyFieldName;
+
+    property Describe: string read GetDescribe write SetDescribe;
+  end;
+
+  { CT数据表列表 }
+  TCtMetaTableList = class(TCtMetaObjectList)
+  private
+  protected
+  public
+    function NewTableItem: TCtMetaTable; virtual;
+
+    property Items[Index: Integer]: TCtMetaTable read GetItem write PutItem; default;
+    property OwnerModel: TCtDataModelGraph read FOwnerModel;
+  end;
+
+  TCtFieldDataType = (
+    cfdtUnknow,
+    cfdtString,
+    cfdtInteger,
+    cfdtFloat,
+    cfdtDate,
+    cfdtBool,
+    cfdtEnum,
+    cfdtBlob,
+    cfdtObject,
+    cfdtList,
+    cfdtFunction,
+    cfdtEvent,
+    cfdtOther);
+
+  TCtKeyFieldType =
+    (
+    cfktNormal,
+    cfktId,
+    cfktPid,
+    cfktRid,
+    cfktName,
+    cfktCaption,
+    cfktComment,
+    cfktTypeName,
+    cfktOrgId,
+    cfktPeriod,
+    cfktCreatorId,
+    cfktCreatorName,
+    cfktCreateDate,
+    cfktModifierId,
+    cfktModifierName,
+    cfktModifyDate,
+    cfktVersionNo,
+    cfktHistoryId,
+    cfktLockStamp,
+    cfktInstNo,
+    cfktProcID,
+    cfktURL,
+    cfktStatus,
+    cfktOrderNo,
+    cfktOthers
+    );
+
+  TCtFieldIndexType =
+    (
+    cfitNone,
+    cfitUnique,
+    cfitNormal
+    );
+
+  TCtFieldDropDownMode =
+    (
+    cfddNone,
+    cfddFixed,
+    cfddEditable,
+    cfddAppendable
+    );
+
+  { CT数据字段 }
+  TCtMetaField = class(TCtMetaObject)
+  private
+  protected
+  public
+    constructor Create; override;
+    destructor Destroy; override;
+
+    //状态保存恢复接口
+    procedure Reset; override;
+    procedure AssignFrom(ACtObj: TCtObject); override;
+
+    function GetLogicDataTypeName: string;
+    function GetFieldTypeDesc(bPhy: Boolean = False; dbType: string = ''): string;
+    function GetFieldComments: string;
+
+    function GetConstraintStr: string;
+    procedure SetConstraintStr(Value: string);
+
+    property OwnerList: TCtMetaFieldList read FOwnerList;
+    property OwnerTable: TCtMetaTable read GetOwnerTable;
+
+
+    //编号
+    property ID;
+    //表编号
+    property RID;
+    //名称
+    property Name;
+    //显示名称
+    property DisplayName: string read FDisplayName write FDisplayName;
+    //数据类型
+    property DataType: TCtFieldDataType read FDataType write FDataType;
+    //数据类型
+    property DataTypeName: string read FDataTypeName write FDataTypeName;
+    //关键字段类型_IdPidRid...
+    property KeyFieldType: TCtKeyFieldType read FKeyFieldType write FKeyFieldType;
+    //关联表
+    property RelateTable: string read FRelateTable write FRelateTable;
+    //关联字段
+    property RelateField: string read FRelateField write FRelateField;
+    //索引类型_0无1唯一2普通
+    property IndexType: TCtFieldIndexType read FIndexType write FIndexType;
+    //提示
+    property Hint: string read FHint write FHint;
+    //备注
+    property Memo;
+    //缺省值
+    property DefaultValue: string read FDefaultValue write FDefaultValue;
+    //是否可为空
+    property Nullable: Boolean read GetNullable write FNullable;
+    //最大长度
+    property DataLength: Integer read FDataLength write FDataLength;
+    //精度
+    property DataScale: Integer read FDataScale write FDataScale;
+  end;
+
+  { CT数据字段列表 }
+  TCtMetaFieldList = class(TCtObjectList)
+  private
+  protected
+  public
+    function NewMetaField: TCtMetaField;
+
+    function FieldByName(AName: string): TCtMetaField;
+
+    property OwnerTable: TCtMetaTable read FOwnerTable;
+    property Items[Index: Integer]: TCtMetaField read GetItem write PutItem; default;
+  end;
+
+  { 数据模型图 }
+  TCtDataModelGraph = class(TCtMetaObject)
+  private
+  protected
+  public
+    constructor Create; override;
+    destructor Destroy; override;
+
+    //CT对象相关接口
+    procedure Reset; override;
+    procedure AssignFrom(ACtObj: TCtObject); override;
+
+    property ID; //       : Integer       read FID           write FID          ;
+    property Name; //     : String        read FName         write FName        ;
+    //图形区宽度
+    property GraphWidth: Integer read FGraphWidth write FGraphWidth;
+    //图形区高度
+    property GraphHeight: Integer read FGraphHeight write FGraphHeight;
+    //缺省数据连接
+    property DefDbEngine: string read FDefDbEngine write FDefDbEngine;
+    //数据连接名
+    property DbConnectStr: string read FDbConnectStr write FDbConnectStr;
+    //选项设置串
+    property ConfigStr: string read FConfigStr write FConfigStr;
+    //数据表
+    property Tables: TCtMetaTableList read FTables write FTables;
+
+    property OwnerList: TCtDataModelGraphList read FOwnerList;
+  end;
+
+  { 数据模型图列表 }
+  TCtDataModelGraphList = class(TCtObjectList)
+  private
+  protected
+  public
+    procedure SortByOrderNo; override;
+    procedure Pack; override;
+    function TableCount: Integer;
+    function NewModelItem: TCtDataModelGraph;
+    property CurDataModal: TCtDataModelGraph read GetCurDataModal write FCurDataModal;
+    property Items[Index: Integer]: TCtDataModelGraph read GetItem write PutItem; default;
+    property OnObjProgress: TMetaObjProgressEvent read FOnObjProgress write FOnObjProgress;
+  end;
+
+//获取环境参数 AName= WINUSER,COMPUTER,IP
+function GetEnv(const AName: string): string;
+
+//从参数面板取值
+function CurAction: string;//当前按下的按钮
+function GetParamValue(AName: string): string;//某个面板项的值
+function GetParamValueDef(AName,ADef: string): string;
+
+//参数面板配置格式如下，包括(*和*)，属性间不能有空格，放在PAS文件的最前面：
+(*[SettingsPanel]
+Control="Label";Caption="Please choose the parameters";Params="[FULLWIDTH]"
+Control="Edit";Name="Author";Caption="Your name";";Value="huz";Params="[FULLWIDTH]"
+Control="ComboBox";Name="GenType";Caption="Generate type";Items="Type1,Type2,Type3";Value="Type1"
+Control="RadioBox";Name="Param1";Caption="Param1";Items="V1,V2,V3";Value="V1"
+Control="CheckBox";Name="Param2";Caption="Param2";Items="V1";Value="V2;V3"
+Control="Button";Name="Help";Caption="Click here for help";";Value="Help..."
+[/SettingsPanel]*)
+
+var
+  AllModels: TCtDataModelGraphList;//所有模型列表。AllModels.CurDataModal为当前模型
+  CurTable: TCtMetaTable;//当前表
+  CurOut: TStrings;//当前输出设备
+
+
+implementation
+
+end.
+ 

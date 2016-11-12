@@ -1,0 +1,28 @@
+Table
+------------------------------------
+Id(编号)                  PKInteger  //[DefSelected]
+Pid(父编号)               Integer
+Rid(关联编号)             FKInteger  //[DefSelected]
+Name(名称)                String
+Caption(标题)             String     //[DefSelected]
+Memo(注释)                String     //[DefSelected]
+TypeName(类名)            String
+OrgId(组织机构编号)       Integer    //[DefSelected]
+Period(期号)              String
+CreatorId(创建人编号)     Integer    //[DefSelected]
+CreatorName(创建人姓名)   String
+CreateDate(创建日期)      Date       //[DefSelected]
+ModifierId(修改人编号)    Integer
+ModifierName(修改人姓名)  String
+ModifyDate(修改日期)      Date
+VersionNo(版本号)         Integer
+HistoryId(历史编号)       Integer
+LockStamp(锁定状态)       String
+InsNo(工作流编号)         Integer
+ProcID(工作流进程号)      Integer
+URL(超链接)               String
+DataLevel(数据级别)       Enum      //[DefSelected]
+DataStatus(数据状态)      Enum
+OrderNo(排序号)           Float
+TestField1            S(100) //测试1号
+TestField2(测试二)    F(6,2) //测试选中[DefSelected]

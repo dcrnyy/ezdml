@@ -1,0 +1,966 @@
+<%
+function ExtStr(Str: string; Len: Integer): string;
+var
+  I: Integer;
+begin
+  Str := Trim(Str);
+  if Length(Str) <= Len then
+    for I := Length(Str) to Len do
+      Str := Str + ' ';
+  Result := Str;
+end;
+
+function DEF_CTMETAFIELD_DATATYPE_NAMES_JAVA(idx: TCtFieldDataType): string;
+begin
+  case Integer(idx) of
+    0: Result := 'Unknown';
+    1: Result := 'String';
+    2: Result := 'int';
+    3: Result := 'double';
+    4: Result := 'Date';
+    5: Result := 'boolean';
+    6: Result := 'int';
+    7: Result := 'Object';
+    8: Result := 'Object';
+    9: Result := 'List';
+    10: Result := 'function';
+    11: Result := 'EventClass';
+    12: Result := 'class';
+  else
+    Result := 'Unknown';
+  end;
+end;
+
+
+function getProtectName(N: string): string;
+begin
+  Result := N;
+  if (Result <> '') and (N <> UpperCase(N)) then
+    if Result[1] >= 'A' then
+      if Result[1] <= 'Z' then
+        Result[1] := Chr(Ord(Result[1]) + (Ord('a') - Ord('A')));
+end;
+
+function getPublicName(N: string): string;
+begin
+  Result := N;
+  if (Result <> '') then
+    if Result[1] >= 'a' then
+      if Result[1] <= 'z' then
+        Result[1] := Chr(Ord(Result[1]) - (Ord('a') - Ord('A')));
+end;
+
+function GetDesName(p, n: string): string;
+begin
+  if p = '' then
+    Result := n
+  else
+    Result := p;
+end;
+
+function GFieldName(F: TCtMetaField): string;
+begin
+  Result := GetDesName(f.Name, f.DisplayName);
+end;
+
+function GFieldType(F: TCtMetaField): string;
+begin
+  if f.DataType = cfdtOther then
+    Result := f.DataTypeName
+  else
+    Result := DEF_CTMETAFIELD_DATATYPE_NAMES_JAVA(f.DataType);
+end;
+
+procedure AddFieldInfo(F: TCtMetaField);
+var
+  S, T, T1, T2, FT: string;
+begin
+  S := GetDesName(f.Name, f.DisplayName);
+  T := F.GetFieldComments;
+  if T <> '' then
+  begin
+    //T := F.Comment;
+    T := StringReplace(T, #13#10, #13#10' * ', [rfReplaceAll]);
+    T := StringReplace(T, #13, #13' * ', [rfReplaceAll]);
+    T := StringReplace(T, #10, #10' * ', [rfReplaceAll]);
+  end;
+
+  if f.DataType = cfdtFunction then
+  begin
+    FT := f.DataTypeName;
+    if FT = '' then
+      FT := 'void';
+    if T<>'' then
+      T2 := '/**'#13#10' * ' + T + #13#10' */'#13#10
+    else
+      T2 := '';
+    S := T2+ 'public ' + FT + ' ' + getPublicName(S) + '()'#13#10
+      + '{' + #13#10
+      + '}';
+  end
+  else
+  begin
+    if f.DataType = cfdtOther then
+      FT := f.DataTypeName
+    else if f.DataType = cfdtEnum then
+      FT := GFieldType(f)
+    else
+      FT := DEF_CTMETAFIELD_DATATYPE_NAMES_JAVA(f.DataType);
+    if T<>'' then
+    begin
+      T1 := '/**'#13#10' * 获取' + T + #13#10' */'#13#10
+      T2 := '/**'#13#10' * 设置' + T + #13#10' */'#13#10
+    end
+    else
+    begin
+      T1 := '';
+      T2 := '';
+    end;
+    S := T1+'public ' + FT + ' get' + getPublicName(S) + '()'#13#10
+      + '{' + #13#10
+      + '  return ' + getProtectName(S) + ';' + #13#10
+      + '}' + #13#10
+      + T2+'public void set' + getPublicName(S) + '(' + FT + ' value)'#13#10
+      + '{' + #13#10
+      + '  this.' + getProtectName(S) + ' = value;' + #13#10
+      + '}';
+  end;
+
+  CurOut.Add('  ' + StringReplace(S, #13#10, #13#10'  ', [rfReplaceAll]));
+end;
+
+procedure GenTbCode(atb: TCtMetaTable);
+var
+  I, L: Integer;
+  clsName, S, V: string;
+  f: TCtMetaField;
+begin
+  with atb do
+  begin
+    S := GetTableComments;
+    CurOut.Add('<pre style="font-size:12px">');
+    CurOut.Add('/**');
+    CurOut.Add(' * ' + Name);
+    if S <> '' then
+      CurOut.Add(' * ' + StringReplace(S, #13#10, #13#10' * ', [rfReplaceAll]));
+    CurOut.Add('*/');
+    CurOut.Add('');
+
+    CurOut.Add('package ' + Name + ';');
+    CurOut.Add('');
+    CurOut.Add('import java.sql.Date;');
+    CurOut.Add('');
+
+    S := GetTableComments;
+    if S <> '' then
+    begin
+      S := StringReplace(S, '}', '%7D', [rfReplaceAll]);
+      CurOut.Add('/** '#13#10' * ' + StringReplace(S, #13#10, #13#10' * ', [rfReplaceAll]) + #13#10' */');
+    end;
+
+    L := 0;
+    for I := 0 to MetaFields.Count - 1 do
+    begin
+      f := MetaFields[I];
+      S := GetDesName(f.Name, f.DisplayName);
+      if L < Length(S) then
+        L := Length(S);
+    end;
+
+    clsName := Name;
+
+    CurOut.Add('public class ' + clsName);
+    CurOut.Add('{');
+
+    for I := 0 to MetaFields.Count - 1 do
+    begin
+      f := MetaFields[I];
+      case f.DataType of
+        cfdtEnum:
+          begin
+            CurOut.Add('  public static final int ' + clsName + getPublicName(GFieldName(f)) + 'Unknown = 0;');
+            CurOut.Add('  public static final int ' + clsName + getPublicName(GFieldName(f)) + 'Value1 = 1;');
+            CurOut.Add('  public static final int ' + clsName + getPublicName(GFieldName(f)) + 'Value2 = 2;');
+            CurOut.Add('');
+          end;
+      end;
+    end;
+
+    for I := 0 to MetaFields.Count - 1 do
+    begin
+      f := MetaFields[I];
+      if f.DataType <> cfdtFunction then
+        CurOut.Add('  protected ' + GFieldType(f) + ' ' + getProtectName(GFieldName(f)) + ';');
+    end;
+    CurOut.Add('');
+
+    CurOut.Add('  public ' + clsName + '()');
+    CurOut.Add('  {');
+    CurOut.Add('  }');
+
+    CurOut.Add('');
+    for I := 0 to MetaFields.Count - 1 do
+    begin
+      f := MetaFields[I];
+      AddFieldInfo(f);
+    end;
+
+    CurOut.Add('');
+    CurOut.Add('  public void reset()');
+    CurOut.Add('  {');
+    for I := 0 to MetaFields.Count - 1 do
+    begin
+      f := MetaFields[I];
+      S := getProtectName(GFieldName(f));
+      V := '';
+      case f.DataType of
+        cfdtInteger, cfdtFloat:
+          CurOut.Add('    ' + ExtStr(V + S, L) + ' = 0;');
+        cfdtString:
+          CurOut.Add('    ' + ExtStr(V + S, L) + ' = null;');
+        cfdtDate:
+          CurOut.Add('    ' + ExtStr(V + S, L) + ' = null;');
+        cfdtEnum:
+          CurOut.Add('    ' + ExtStr(V + S, L) + ' = ' + getPublicName(GFieldName(f)) + '_Unknown;');
+        cfdtBool:
+          CurOut.Add('    ' + ExtStr(V + S, L) + ' = false;');
+        cfdtList:
+          CurOut.Add('    ' + ExtStr(V + S, L) + '.Clear();');
+        cfdtEvent:
+          CurOut.Add('    ' + ExtStr(V + S, L) + ' = null;');
+        cfdtFunction: ;
+      else
+        CurOut.Add('    ' + ExtStr(S, L) + ' .reset();');
+      end;
+    end;
+    CurOut.Add('  }');
+    CurOut.Add('');
+
+
+    CurOut.Add('  public void assignFrom(' + clsName + ' AObj)');
+    CurOut.Add('  {');
+    CurOut.Add('    if(AObj==null)');
+    CurOut.Add('    {');
+    CurOut.Add('      Reset();');
+    CurOut.Add('      return;');
+    CurOut.Add('    }');
+    for I := 0 to MetaFields.Count - 1 do
+    begin
+      f := MetaFields[I];
+      S := getProtectName(GFieldName(f));
+      V := ''; //RemRootCtField(f.Name);
+      case f.DataType of
+        cfdtString, cfdtInteger, cfdtFloat, cfdtDate, cfdtBool, cfdtEnum:
+          CurOut.Add('    ' + ExtStr(V + S, L) + ' = AObj.' + S + ';');
+        cfdtFunction, cfdtEvent: ;
+      else
+        CurOut.Add('    ' + ExtStr(S, L) + ' .  assignFrom(AObj.' + S + ');');
+      end;
+    end;
+    CurOut.Add('  }');
+    CurOut.Add('');
+
+
+    CurOut.Add('}');
+    CurOut.Add('');
+    CurOut.Add('</pre>');
+
+  end;
+end;
+
+
+procedure GenHtmlList(atb:TCtMetaTable);
+var
+  I, J: Integer;
+  S,T, tbN, Tmp1,Tmp2,Tmp3: String;
+  F: TCTMetaField;
+  col, listColCount:Integer;
+begin
+  Tmp1 :=
+'<table class="x_hlist" cellSpacing="1" cellPadding="0" width="660" border="0">' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td class="TitleLine" colSpan="4" >' + #13#10 +
+'    %OBJ_NAME%' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td bgColor="#ffffff" colSpan="4" height="1">' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr class="vt9_title">' + #13#10 +
+'  <td noWrap width="100%" colSpan="4" >' + #13#10 +
+'    &nbsp; %OBJ_NAME%信息查询' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td colSpan="4" height="5">' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10  +
+'  <tr height="1"><td width="100"></td><td width="230"><td width="100"></td><td width="230"></td></tr>' + #13#10 + #13#10;
+  Tmp2 :=
+#13#10'<tr>' + #13#10 +
+'<td height="6" colSpan="4" >' + #13#10 +
+'</td>' + #13#10 +
+'</tr>' + #13#10 +
+'<tr>' + #13#10 +
+'<td></td>' + #13#10 +
+'<td colspan="3">' + #13#10 +
+'    【　　查　询　　】' + #13#10 +
+'    &nbsp;&nbsp; 提示：' + #13#10 +
+'      <span id="Cabp_Control_errtip" style="COLOR: red">' + #13#10 +
+'      请输入过滤条件进行查询。' + #13#10 +
+'      </span>' + #13#10 +
+'</td></tr>' + #13#10 +
+'<tr>' + #13#10 +
+'<td height="6" colSpan="4" >' + #13#10 +
+'</td>' + #13#10 +
+'</tr>' + #13#10 +
+'<tr>' + #13#10 +
+'<tr>' + #13#10 +
+'<td height="2" class="T9_blackB" colSpan="4" >' + #13#10 +
+'</td>' + #13#10 +
+'</tr>' + #13#10 +
+'<tr>' + #13#10 +
+'<td height="6" colSpan="4" >' + #13#10 +
+'</td>' + #13#10 +
+'</tr>' + #13#10 +
+'' + #13#10 +
+'<tr>' + #13#10 +
+'<tr>' + #13#10 +
+'<td colSpan="4" >' + #13#10 +
+'<div style="width=660px; height=300px;overflow:auto">' + #13#10 +
+'<table class="x_hlist table_border" border="0" cellspacing="0" cellpadding="0" width="%LIST_TABLE_WIDTH%">';
+  Tmp3 :=
+  '</table>' + #13#10 +
+'</div>' + #13#10 +
+'</td>' + #13#10 +
+'</tr>' + #13#10 +
+'' + #13#10 +
+'<tr>' + #13#10 +
+'</table>';
+
+
+  tbN:=atb.Caption;
+  if tbN='' then
+    tbN:=atb.Name;
+  S := StringReplace(Tmp1,'%OBJ_NAME%',tbN,[rfReplaceAll]);
+  CurOut.Add(S);
+  col := 1;
+  listColCount:=0;
+  for I:=0 to atb.MetaFields.Count-1 do
+  begin
+    F:=atb.MetaFields.Items[I];
+    S:=F.Name;
+    if (F.KeyFieldType=cfktId) or (F.KeyFieldType=cfktRid) then
+      Continue;
+    if F.DisplayName<>'' then
+      S:=F.DisplayName;
+    listColCount:=listColCount+1;
+    if(Pos('内容',S)>0) or (Pos('说明',S)>0) or (Pos('备注',S)>0) or (Pos('列表',S)>0)
+      or (F.DataLength>=9999) or (F.DataType=cfdtBlob) then
+    begin
+      Continue;
+    end;
+    
+    if col=3 then
+    begin
+      CurOut.Add('</tr>');
+      col := 1;
+    end;
+    if col=1 then
+    begin
+      CurOut.Add('');
+      CurOut.Add('<tr>');
+    end;
+    CurOut.Add('<td>'+S+'</td>');
+    if (F.DataType = cfdtBool) then
+      T:='<td><input type="checkbox"/>是</td>'
+    else if(Pos('类型',S)>0) or (Pos('类别',S)>0) or (Pos('所属',S)>0) or (Pos('状态',S)>0) or (Pos('级别',S)>0) or (Pos('选择',S)>0)
+      or (Pos('时间',S)>0) or (Pos('日期',S)>0) or (F.DataType = cfdtDate) or (F.DataType=cfdtEnum) then
+    begin
+      if (F.DataType = cfdtInteger) or (F.DataType = cfdtFloat) or (F.DataType = cfdtDate) then
+        T:='<td><select style="WIDTH: 90px"></select>-<select style="WIDTH: 90px"></select></td>'
+      else
+        T:='<td><select style="WIDTH: 186px"></select></td>';
+    end
+    else
+    begin
+      if (F.DataType = cfdtInteger) or (F.DataType = cfdtFloat) or (F.DataType = cfdtDate) then
+        T:='<td><input style="WIDTH: 90px" />-<input style="WIDTH: 90px" /></td>'
+      else
+        T:='<td><input style="WIDTH: 186px" /></td>';
+    end;
+    CurOut.Add(T);
+    col:=col+1;
+  end;
+  if col=2 then
+  begin
+    CurOut.Add('<td></td><td></td>');
+    col:=3;
+  end;
+  if col=3 then
+  begin
+    CurOut.Add('</tr>');
+  end;
+  CurOut.Add('');
+  
+  S := StringReplace(Tmp2,'%OBJ_NAME%',tbN,[rfReplaceAll]);
+  S := StringReplace(Tmp2,'%LIST_TABLE_WIDTH%',IntToStr(listColCount*120+30),[rfReplaceAll]);
+  CurOut.Add(S);
+
+  for J:=0 to 10 do
+  begin
+    if J=0 then
+      CurOut.Add('<tr height="25" class="T9_blackB">')
+    else
+      CurOut.Add('<tr height="25">');
+    col := 1;
+    for I:=0 to atb.MetaFields.Count-1 do
+    begin
+      F:=atb.MetaFields.Items[I];
+      S:=F.Name;
+      if (F.KeyFieldType=cfktId) or (F.KeyFieldType=cfktRid) then
+        Continue;
+      if F.DisplayName<>'' then
+        S:=F.DisplayName;
+
+      if J>0 then
+      begin
+        S:=S+IntToStr(J);
+        if F.DefaultValue<>'' then
+          S:=F.DefaultValue
+        else if F.DataType=cfdtDate then
+          S:=FormatDateTime('yyyy-mm-dd hh:nn',Now-20+J+I+Cos(J+Time))
+        else if F.DataType=cfdtInteger then
+          S:=IntToStr(J)
+        else if F.DataType=cfdtFloat then
+          S:=Format('%f',[Abs(Sin(J+I+Time)*100)])
+        else if F.DataType=cfdtBool then
+        begin
+          if (J mod 3)=0 then
+            S:='否'
+          else
+            S:='是';
+        end
+      end;
+      if col=1 then
+        CurOut.Add('<td width="150">'+S+'</td>')
+      else
+        CurOut.Add('<td width="120">'+S+'</td>');
+      col:=col+1;
+    end;
+    CurOut.Add('</tr>');
+  end;
+  
+  S := StringReplace(Tmp3,'%OBJ_NAME%',tbN,[rfReplaceAll]);
+  CurOut.Add(S);
+end;
+
+procedure GenHtmlSheet(atb: TCtMetaTable);var
+  I: Integer;
+  S,T,V,U, tbN, Tmp1,Tmp2: String;
+  F: TCTMetaField;
+  col:Integer;
+begin
+  Tmp1 := 
+'<table class="x_hlist" cellSpacing="1" cellPadding="0" width="660" border="0">' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td class="TitleLine" colSpan="4" >' + #13#10 +
+'    %OBJ_NAME%' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td bgColor="#ffffff" colSpan="4" height="1">' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr class="vt9_title">' + #13#10 +
+'  <td noWrap width="100%" colSpan="4" >' + #13#10 +
+'    &nbsp; %OBJ_NAME%信息管理' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td colSpan="4" height="5">' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td class="T9_black" colSpan="4">' + #13#10 +
+'    &nbsp; 提示：' + #13#10 +
+'      <span id="Cabp_Control_errtip" style="COLOR: red">' + #13#10 +
+'      请确保填写的信息真实、正确、有效。' + #13#10 +
+'      </span>' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td colSpan="4" height="5">' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td class="T9_blackB" colSpan="2">' + #13#10 +
+'    %OBJ_NAME%信息' + #13#10 +
+'  </td>' + #13#10 +
+'  <td class="T9_blackB" colSpan="2">' + #13#10 +
+'    请注意：带有*的项目必须填写。' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr height="1"><td width="100"></td><td width="230"><td width="100"></td><td width="230"></td></tr>' + #13#10+ #13#10 ;
+  Tmp2 :=
+'  <tr>' + #13#10 +
+'  <td height="12" colSpan="4" >' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td height="4" class="T9_blackB" colSpan="4" >' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <tr>' + #13#10 +
+'  <td colSpan="4">' + #13#10 +
+'    【　添加　】' + #13#10 +
+'    【　修改　】' + #13#10 +
+'    【　查询　】' + #13#10 +
+'    【删除】' + #13#10 +
+'    【刷新】' + #13#10 +
+'    【返回】' + #13#10 +
+'  </td>' + #13#10 +
+'  </tr>' + #13#10 +
+'</table>';
+
+  tbN:=atb.Caption;
+  if tbN='' then
+    tbN:=atb.Name;
+  S := StringReplace(Tmp1,'%OBJ_NAME%',tbN,[rfReplaceAll]);
+  CurOut.Add(S);
+  col := 1;
+  for I:=0 to atb.MetaFields.Count-1 do
+  begin
+    F:=atb.MetaFields.Items[I];
+    S:=F.Name;
+    if (F.KeyFieldType=cfktId) or (F.KeyFieldType=cfktRid) then
+      Continue;
+    if F.DisplayName<>'' then
+      S:=F.DisplayName;
+    U:=S;
+    if (F.KeyFieldType=cfktName) or not F.Nullable then
+      U:='* '+S;
+    V:=S+'1';
+    if F.DefaultValue<>'' then
+      V:=F.DefaultValue
+    else if F.DataType=cfdtDate then
+      V:=FormatDateTime('yyyy-mm-dd hh:nn',Now-20+I+Cos(I+Time))
+    else if F.DataType=cfdtInteger then
+      V:=IntToStr(Round(Sin(I+Time)*100))
+    else if F.DataType=cfdtFloat then
+      V:=Format('%f',[Abs(Sin(I+Time)*100)])
+    else if F.DataType=cfdtBool then
+    begin
+      V:='是';
+    end;
+    
+    if(Pos('内容',S)>0) or (Pos('说明',S)>0) or (Pos('备注',S)>0) or (Pos('列表',S)>0)
+      or (F.DataLength>=9999) or (F.DataType = cfdtBlob) then
+    begin
+      if col=2 then
+      begin
+        CurOut.Add('<td></td><td></td></tr>');
+        CurOut.Add('');
+        col := 1;
+      end;
+      CurOut.Add('<tr>');
+      CurOut.Add('<td>'+U+'</td>');
+      T:='<td colspan="3"><textarea style="WIDTH: 491px; HEIGHT: ';
+      if (F.DataType = cfdtBlob) then
+        T:=T+'180'
+      else
+        T:=T+'72';
+      T:=T+'" rows="1" cols="20">'+V+'</textarea></td>'
+      CurOut.Add(T);
+      col := 3;
+      Continue;
+    end;
+    
+    if col=3 then
+    begin
+      CurOut.Add('</tr>');
+      CurOut.Add('');
+      col := 1;
+    end;
+    if col=1 then
+    begin
+      CurOut.Add('<tr>');
+    end;
+    CurOut.Add('<td>'+U+'</td>');
+    if (F.DataType = cfdtBool) then
+      T:='<td><input type="checkbox" checked/>是</td>'
+    else
+    begin
+      if(Pos('类型',S)>0) or (Pos('类别',S)>0) or (Pos('所属',S)>0) or (Pos('状态',S)>0) or (Pos('级别',S)>0) or (Pos('选择',S)>0)
+        or (Pos('时间',S)>0) or (Pos('日期',S)>0) or (F.DataType = cfdtDate) or (F.DataType = cfdtEnum) then
+        T:='<td><select style="WIDTH: 162px"><option selected>'+V+'</option></select></td>'
+      else
+        T:='<td><input style="WIDTH: 162px" value="'+V+'"/></td>';
+    end;
+    CurOut.Add(T);
+    col:=col+1;
+  end;
+  if col=2 then
+  begin
+    CurOut.Add('<td></td><td></td>');
+    col:=3;
+  end;
+  if col=3 then
+  begin
+    CurOut.Add('</tr>');
+    CurOut.Add('');
+  end;
+  S := StringReplace(Tmp2,'%OBJ_NAME%',tbN,[rfReplaceAll]);
+  CurOut.Add(S);
+
+end;
+
+var
+  I, J, K, N, selC: Integer;
+  tfn, S, sBoundary: String;
+  tb: TCtMetaTable;
+  F: TCTMetaField;
+  bPhyMode, bMht: Boolean;
+  db: String;
+begin
+  sBoundary := '--_NextPart_AED089B74422496E96E3_A75697E013C6';
+  tfn:=AllModels.CurDataModal.Param['ExportFileName'];
+  S:=LowerCase(ExtractFileExt(tfn));
+  if (S='.mht')  or (S='.doc') then
+    bMht := True
+  else
+    bMht := False;
+  if AllModels.CurDataModal.Param['ShowPhyFieldName']='1' then
+    bPhyMode := True
+  else
+    bPhyMode := False;
+  db := AllModels.CurDataModal.Param['DatabaseEngine'];
+
+  selC := 0;
+  for I:=0 to AllModels.CurDataModal.Tables.Count-1 do
+    if AllModels.CurDataModal.Tables[I].IsSelected then
+      selC := selC+1;
+
+  if bMht then
+  begin
+    CurOut.Add(
+    'MIME-Version: 1.0' + #13#10 +
+    'Content-Type: multipart/related;' + #13#10 +
+    '       type="text/html";' + #13#10 +
+    '       boundary="' + sBoundary + '"' + #13#10 +
+    'X-Priority: 3' + #13#10 +
+    'X-MSMail-Priority: Normal' + #13#10 +
+    'X-Unsent: 1' + #13#10 +
+    'X-MimeOLE: Produced By EZDML' + #13#10 +
+    '' + #13#10 +
+    'This is a multi-part message in MIME format.' + #13#10 +
+    '' + #13#10 +
+    '' + #13#10 +
+    '--' + sBoundary + #13#10 +
+    'Content-Type: text/html;' + #13#10 +
+    '    charset="gbk"' + #13#10 +
+    'Content-Transfer-Encoding: 8bit' + #13#10 +
+    '');
+  end;
+%>
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Netsky-CellTree">
+<style>
+<!--
+br.x_dml
+	{mso-data-placement:same-cell;}
+tr.x_dml
+	{height:14.25pt;}
+td.x_dml
+	{
+	padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	font-size:12.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	color:windowtext;
+	font-family:宋体;
+	text-align:general;
+	vertical-align:middle;
+	border:none;
+	mso-number-format:"_ * \#\,\#\#0\.00_ \;_ * \\-\#\,\#\#0\.00_ \;_ * \0022-\0022??_ \;_ \@_ ";
+	white-space:nowrap;}
+.x_head1
+	{
+	height:14.25pt;
+	width:80pt;
+	font-size:9.0pt;
+	text-align:left;
+	border:.5pt solid windowtext;
+	background:teal;}
+.x_head2
+	{
+	height:14.25pt;
+	width:80pt;
+	font-size:9.0pt;
+	text-align:left;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:teal;}
+.x_head3
+	{
+	height:14.25pt;
+	width:160pt;
+	font-size:9.0pt;
+	text-align:left;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:teal;}
+.x_item1
+	{
+	height:14.25pt;
+	font-size:9.0pt;
+	text-align:left;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.x_item2
+	{
+	font-size:9.0pt;
+	text-align:left;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+.x_item3
+	{
+	font-size:9.0pt;
+	text-align:left;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;}
+
+	TABLE.x_hlist { FONT-SIZE: 12px; COLOR: #000000 } 
+	.TitleLine { padding-left: 12px; FONT-WEIGHT:
+	bold; FONT-SIZE: 12px; COLOR: #ffffff; background-color: #578b43; height:
+	28px; padding-top:6px; } 
+	.TitleLine2 { padding-left: 12px; FONT-WEIGHT:
+	bold; FONT-SIZE: 12px; COLOR: #ffffff; background-color: #578b43; height:
+	20px; padding-top:4px; } 
+	.Titleline2_bg{ background-color:#f3f3ec; border-bottom:2px
+	solid #578b43; padding:10px; } 
+	.Titleline2td{ height:18px; } 
+	.vt9_title
+	{ font-weight: bold; font-size: 12px; color: #2F2F2F; background-color:
+	#CCCCCC; height: 20px; line-height: 24px; } 
+	.T9_blackB { FONT-WEIGHT: bold;
+	FONT-SIZE: 12px; COLOR: #008000; LINE-height: 25px; TEXT-DECORATION: none;
+	TEXT-align: left; background-color:#cecece; padding-left:5px; }
+	.table_border td{border-top:1px #888 solid;border-right:1px #888 solid;padding-left:5px;}
+	.table_border{border-bottom:1px #888 solid;border-left:1px #888 solid;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>Sheet1</x:Name>
+    <x:WorksheetOptions>
+     <x:Selected/>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+  </x:ExcelWorksheets>
+ </x:ExcelWorkbook>
+</xml>
+<![endif]-->
+</head>
+
+
+<body link=blue vlink=purple>
+
+<h1>${GetEnv('DMLFILETITLE')} (${ChangeFileExt(ExtractFileName(tfn),'')})</h1>
+<p>
+——${GetEnv('WINUSER')} ${DateToStr(Now)}
+</p>
+
+<h2>一、架构</h2>
+<%
+  for K:=0 to AllModels.Count-1 do
+  if (selC=0) or (AllModels.Items[K] = AllModels.CurDataModal) then
+  begin
+%>
+<h3>1.${K+1} ${AllModels.Items[K].Name}</h3>
+
+<%
+  N:=0;
+  for I:=0 to AllModels.Items[K].Tables.Count-1 do
+  if (selC=0) or AllModels.Items[K].Tables[I].IsSelected then
+  begin
+    N := N+1;
+    tb := AllModels.Items[K].Tables[I];
+%>
+<h4>1.${K+1}.${N} ${tb.Name} <%if tb.Caption<>'' then PrintVar('('+tb.Caption+')');%></h4>
+<%
+  end; //I
+%>
+<p>模型图：</p>
+<%
+    if bMht then
+    begin
+%>
+<img src="file:///dmlgraph${K+1}.png" />
+<%
+    end
+    else
+    begin
+%>
+<p>（略）</p>
+<%
+    end;
+  end;
+%>
+
+
+<h2>二、字典</h2>
+
+<%
+  for K:=0 to AllModels.Count-1 do
+  if (selC=0) or (AllModels.Items[K] = AllModels.CurDataModal) then
+  begin
+%>
+
+<h3>2.${K+1} ${AllModels.Items[K].Name}</h3>
+
+<%
+  N:=0;
+  for I:=0 to AllModels.Items[K].Tables.Count-1 do
+  if (selC=0) or AllModels.Items[K].Tables[I].IsSelected then
+  begin
+    N := N+1;
+    tb := AllModels.Items[K].Tables[I];
+%>
+
+<h4>2.${K+1}.${N} ${tb.Name} <%if tb.Caption<>'' then PrintVar('('+tb.Caption+')');%></h4>
+
+<table class=x_dml x:str border=0 cellpadding=0 cellspacing=0
+	style='border-collapse:collapse;table-layout:fixed;'>
+<tr>
+<td class=x_head1>字段名</td>
+<td class=x_head2>逻辑名</td>
+<td class=x_head2>数据类型</td>
+<td class=x_head2>约束</td>
+<td class=x_head3>说明</td>
+</tr>
+<%
+    for J:=0 to tb.MetaFields.Count-1 do
+    begin
+      F:=tb.MetaFields.Items[J];
+%>
+<tr>
+<td class=x_item1>${F.Name}</td>
+<td class=x_item2>${F.DisplayName}</td>
+<td class=x_item2>${F.GetFieldTypeDesc(bPhyMode,db)}</td>
+<td class=x_item2>${F.GetConstraintStr}</td>
+<td class=x_item3>${EscapeXml(F.Memo)}</td>
+</tr>
+
+<%
+    end; //J
+%>
+</table>
+
+<%
+  end; //I
+  end; //K
+%>
+
+<h2>三、界面</h2>
+
+<%
+  for K:=0 to AllModels.Count-1 do
+  if (selC=0) or (AllModels.Items[K] = AllModels.CurDataModal) then
+  begin
+%>
+
+<h3>3.${K+1} ${AllModels.Items[K].Name}</h3>
+
+<%
+  N:=0;
+  for I:=0 to AllModels.Items[K].Tables.Count-1 do
+  if (selC=0) or AllModels.Items[K].Tables[I].IsSelected then
+  begin
+    N := N+1;
+    tb := AllModels.Items[K].Tables[I];
+%>
+
+<h4>3.${K+1}.${N} ${tb.Name} <%if tb.Caption<>'' then PrintVar('('+tb.Caption+')');%></h4>
+
+<%
+    CurOut.Add('<p>列表界面：</p>');
+    GenHtmlList(tb);
+    CurOut.Add('<p>内容界面：</p>');
+    GenHtmlSheet(tb);
+
+  end; //I
+  end; //K
+%>
+
+<h2>四、代码</h2>
+
+<%
+  for K:=0 to AllModels.Count-1 do
+  if (selC=0) or (AllModels.Items[K] = AllModels.CurDataModal) then
+  begin
+%>
+
+<h3>4.${K+1} ${AllModels.Items[K].Name}</h3>
+
+<%
+  N:=0;
+  for I:=0 to AllModels.Items[K].Tables.Count-1 do
+  if (selC=0) or AllModels.Items[K].Tables[I].IsSelected then
+  begin
+    N := N+1;
+    tb := AllModels.Items[K].Tables[I];
+%>
+<h4>4.${K+1}.${N} ${tb.Name} <%if tb.Caption<>'' then PrintVar('('+tb.Caption+')');%></h4>
+<%
+    GenTbCode(tb);
+  end; //I
+  end; //K
+%>
+
+</body>
+</html>
+<%
+  if bMht then
+  begin
+    for K:=0 to AllModels.Count-1 do
+    if (selC=0) or (AllModels.Items[K] = AllModels.CurDataModal) then
+    begin
+      CurOut.Add('--'+sBoundary);
+%>
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: file:///dmlgraph${K+1}.png
+
+<%
+      if selC>0 then
+        CurOut.Add(ExecAppCmd('GET_DML_GRAPH_BASE64TEXT', '(CUR_DATA_MODEL)', ''))
+      else
+        CurOut.Add(ExecAppCmd('GET_DML_GRAPH_BASE64TEXT', AllModels.Items[K].Name, ''));
+    end;
+    CurOut.Add('--'+sBoundary+'--');
+  end;
+end.%>
