@@ -8,389 +8,389 @@
   resources were bound to the produced executable.
 */
 
-#define VDBConsts_SEditRecord 64784
-#define VDBConsts_SPostEdit 64785
-#define VDBConsts_SCancelEdit 64786
-#define VDBConsts_SRefreshRecord 64787
-#define VDBConsts_SDeleteRecordQuestion 64788
-#define VDBConsts_SDeleteMultipleRecordsQuestion 64789
-#define VDBConsts_SDataSourceFixed 64790
-#define VDBConsts_SPropDefByLookup 64791
-#define VDBConsts_STooManyColumns 64792
-#define VDBConsts_SRemoteLogin 64793
-#define mysql_sLibMySql_Undefined 64794
-#define mysql_sLibMySql_Incompatible 64795
-#define mysql_sLibMySql_Version_Incompatible 64796
-#define mysql_EProcNotFound 64797
-#define mysql_ELibraryNotFound 64798
-#define ide_editor_STR_UNNAMED 64800
-#define ide_editor_STR_SUCCESSFULLY_COMPILED 64801
-#define ide_editor_STR_PS_EXECUTING 64802
-#define ide_editor_STR_SUCCESSFULLY_EXECUTED 64803
-#define ide_editor_STR_RUNTIME_ERROR 64804
-#define ide_editor_STR_INPUTBOX_TITLE 64805
-#define ide_editor_STR_NOTSAVED 64806
-#define JConsts_sChangeJPGSize 64807
-#define JConsts_sJPEGError 64808
-#define JConsts_sJPEGImageFile 64809
-#define VDBConsts_SFirstRecord 64810
-#define VDBConsts_SPriorRecord 64811
-#define VDBConsts_SNextRecord 64812
-#define VDBConsts_SLastRecord 64813
-#define VDBConsts_SInsertRecord 64814
-#define VDBConsts_SDeleteRecord 64815
-#define ADOConst_SMissingConnection 64816
-#define ADOConst_SNoDetailFilter 64817
-#define ADOConst_SBookmarksRequired 64818
-#define ADOConst_SMissingCommandText 64819
-#define ADOConst_SNoResultSet 64820
-#define ADOConst_SADOCreateError 64821
-#define ADOConst_SEventsNotSupported 64822
-#define ADOConst_SUsupportedFieldType 64823
-#define ADOConst_SNoMatchingADOType 64824
-#define ADOConst_SConnectionRequired 64825
-#define ADOConst_SCantRequery 64826
-#define ADOConst_SNoFilterOptions 64827
-#define ADOConst_SRecordsetNotOpen 64828
-#define ADOConst_sNameAttr 64829
-#define ADOConst_sValueAttr 64830
-#define ide_editor_STR_TEXT_NOTFOUND 64831
-#define uPSPreProcessor_RPS_IncludeNotFound 64832
-#define uPSPreProcessor_RPS_DefineTooManyParameters 64833
-#define uPSPreProcessor_RPS_NoIfdefForEndif 64834
-#define uPSPreProcessor_RPS_NoIfdefForElse 64835
-#define uPSPreProcessor_RPS_ElseTwice 64836
-#define uPSPreProcessor_RPS_UnknownCompilerDirective 64837
-#define uPSPreProcessor_RPs_DefineNotClosed 64838
-#define uPSC_dll_RPS_Invalid_External 64839
-#define uPSC_dll_RPS_InvalidCallingConvention 64840
-#define uPSComponent_RPS_UnableToReadVariant 64841
-#define uPSComponent_RPS_UnableToWriteVariant 64842
-#define uPSComponent_RPS_ScripEngineAlreadyRunning 64843
-#define uPSComponent_RPS_ScriptNotCompiled 64844
-#define uPSComponent_RPS_NotRunning 64845
-#define uPSComponent_RPS_UnknownIdentifier 64846
-#define uPSComponent_RPS_NoScript 64847
-#define uPSCompiler_RPS_UnknownError 64848
-#define uPSCompiler_RPS_NotAllowed 64849
-#define uPSCompiler_RPS_UnitNotFound 64850
-#define uPSCompiler_RPS_Hint 64851
-#define uPSCompiler_RPS_VariableNotUsed 64852
-#define uPSCompiler_RPS_FunctionNotUsed 64853
-#define uPSCompiler_RPS_UnknownHint 64854
-#define uPSCompiler_RPS_Warning 64855
-#define uPSCompiler_RPS_CalculationAlwaysEvaluatesTo 64856
-#define uPSCompiler_RPS_IsNotNeeded 64857
-#define uPSCompiler_RPS_AbstractClass 64858
-#define uPSCompiler_RPS_UnknownWarning 64859
-#define uPSCompiler_RPS_NotArrayProperty 64860
-#define uPSCompiler_RPS_NotProperty 64861
-#define uPSCompiler_RPS_UnknownProperty 64862
-#define uPSPreProcessor_RPS_TooManyNestedInclude 64863
-#define uPSCompiler_RPS_CloseBlockExpected 64864
-#define uPSCompiler_RPS_VariableExpected 64865
-#define uPSCompiler_RPS_StringExpected 64866
-#define uPSCompiler_RPS_EndExpected 64867
-#define uPSCompiler_RPS_UnSetLabel 64868
-#define uPSCompiler_RPS_NotInLoop 64869
-#define uPSCompiler_RPS_InvalidJump 64870
-#define uPSCompiler_RPS_OpenBlockExpected 64871
-#define uPSCompiler_RPS_WriteOnlyProperty 64872
-#define uPSCompiler_RPS_ReadOnlyProperty 64873
-#define uPSCompiler_RPS_ClassTypeExpected 64874
-#define uPSCompiler_RPS_DivideByZero 64875
-#define uPSCompiler_RPS_MathError 64876
-#define uPSCompiler_RPS_UnsatisfiedForward 64877
-#define uPSCompiler_RPS_ForwardParameterMismatch 64878
-#define uPSCompiler_RPS_InvalidNumberOfParameter 64879
-#define uPSCompiler_RPS_PeriodExpected 64880
-#define uPSCompiler_RPS_DuplicateIdent 64881
-#define uPSCompiler_RPS_ColonExpected 64882
-#define uPSCompiler_RPS_UnknownType 64883
-#define uPSCompiler_RPS_CloseRoundExpected 64884
-#define uPSCompiler_RPS_TypeMismatch 64885
-#define uPSCompiler_RPS_InternalError 64886
-#define uPSCompiler_RPS_AssignmentExpected 64887
-#define uPSCompiler_RPS_ThenExpected 64888
-#define uPSCompiler_RPS_DoExpected 64889
-#define uPSCompiler_RPS_NoResult 64890
-#define uPSCompiler_RPS_OpenRoundExpected 64891
-#define uPSCompiler_RPS_CommaExpected 64892
-#define uPSCompiler_RPS_ToExpected 64893
-#define uPSCompiler_RPS_IsExpected 64894
-#define uPSCompiler_RPS_OfExpected 64895
-#define uPSCompiler_RPS_InvalidTypeForVar 64896
-#define uPSCompiler_RPS_InvalidType 64897
-#define uPSCompiler_RPS_UnableToRegisterType 64898
-#define uPSCompiler_RPS_UnknownInterface 64899
-#define uPSCompiler_RPS_ConstantValueMismatch 64900
-#define uPSCompiler_RPS_ConstantValueNotAssigned 64901
-#define uPSCompiler_RPS_Error 64902
-#define uPSCompiler_RPS_UnknownIdentifier 64903
-#define uPSCompiler_RPS_IdentifierExpected 64904
-#define uPSCompiler_RPS_CommentError 64905
-#define uPSCompiler_RPS_StringError 64906
-#define uPSCompiler_RPS_CharError 64907
-#define uPSCompiler_RPS_SyntaxError 64908
-#define uPSCompiler_RPS_EOF 64909
-#define uPSCompiler_RPS_SemiColonExpected 64910
-#define uPSCompiler_RPS_BeginExpected 64911
-#define uPSRuntime_RPS_OutofRecordRange 64912
-#define uPSRuntime_RPS_NullPointerException 64913
-#define uPSRuntime_RPS_NullVariantError 64914
-#define uPSRuntime_RPS_OutOfMemory 64915
-#define uPSRuntime_RPS_InterfaceNotSupported 64916
-#define uPSRuntime_RPS_UnknownError 64917
-#define uPSRuntime_RPS_InvalidArray 64918
-#define uPSRuntime_RPS_OutOfStringRange 64919
-#define uPSRuntime_RPS_CannotCastInterface 64920
-#define uPSRuntime_RPS_CapacityLength 64921
-#define uPSRuntime_RPS_NILInterfaceException 64922
-#define uPSRuntime_RPS_UnknownMethod 64923
-#define uPSDebugger_RPS_ExpectedReturnAddressStackBase 64924
-#define uPSCompiler_RPS_OnUseEventOnly 64925
-#define uPSCompiler_RPS_UnableToRegisterFunction 64926
-#define uPSCompiler_RPS_UnableToRegisterConst 64927
-#define uPSRuntime_RPS_InvalidType 64928
-#define uPSRuntime_RPS_InternalError 64929
-#define uPSRuntime_RPS_InvalidHeader 64930
-#define uPSRuntime_RPS_InvalidOpcode 64931
-#define uPSRuntime_RPS_InvalidOpcodeParameter 64932
-#define uPSRuntime_RPS_NoMainProc 64933
-#define uPSRuntime_RPS_OutOfGlobalVarsRange 64934
-#define uPSRuntime_RPS_OutOfProcRange 64935
-#define uPSRuntime_RPS_OutOfRange 64936
-#define uPSRuntime_RPS_OutOfStackRange 64937
-#define uPSRuntime_RPS_TypeMismatch 64938
-#define uPSRuntime_RPS_UnexpectedEof 64939
-#define uPSRuntime_RPS_VersionError 64940
-#define uPSRuntime_RPS_DivideByZero 64941
-#define uPSRuntime_RPS_MathError 64942
-#define uPSRuntime_RPS_CouldNotCallProc 64943
-#define SynEditStrConst_SYNS_AttrSpace 64944
-#define SynEditStrConst_SYNS_AttrString 64945
-#define SynEditStrConst_SYNS_AttrSymbol 64946
-#define SynEditStrConst_SYNS_ScrollInfoFmt 64947
-#define SynEditStrConst_SYNS_ScrollInfoFmtTop 64948
-#define SynEditStrConst_SYNS_EDuplicateShortcut 64949
-#define SynEditStrConst_SYNS_FilterPascal 64950
-#define SynEditStrConst_SYNS_LangPascal 64951
-#define SynEditTextBuffer_SListIndexOutOfBounds 64952
-#define SynEditTextBuffer_SInvalidCapacity 64953
-#define uPSUtils_RPS_InvalidFloat 64954
-#define uPSRuntime_RPS_UnknownIdentifier 64955
-#define uPSRuntime_RPS_Exception 64956
-#define uPSRuntime_RPS_Invalid 64957
-#define uPSRuntime_RPS_NoError 64958
-#define uPSRuntime_RPS_CannotImport 64959
-#define XMLConst_SMismatchedRegItems 64960
-#define XMLConst_SNotSingleTextNode 64961
-#define XMLConst_SNoDOMParseOptions 64962
-#define XMLConst_SNodeReadOnly 64963
-#define XMLConst_SNoRefresh 64964
-#define XMLConst_SMissingFileName 64965
-#define XMLConst_SLine 64966
-#define SynEditStrConst_SYNS_AttrAssembler 64967
-#define SynEditStrConst_SYNS_AttrCharacter 64968
-#define SynEditStrConst_SYNS_AttrComment 64969
-#define SynEditStrConst_SYNS_AttrFloat 64970
-#define SynEditStrConst_SYNS_AttrHexadecimal 64971
-#define SynEditStrConst_SYNS_AttrIdentifier 64972
-#define SynEditStrConst_SYNS_AttrNumber 64973
-#define SynEditStrConst_SYNS_AttrPreprocessor 64974
-#define SynEditStrConst_SYNS_AttrReservedWord 64975
-#define xdom_SNegativeSizeInvalid 64976
-#define xdom_SCapacityLessSize 64977
-#define xdom_STargetNil 64978
-#define XMLConst_SDuplicateRegistration 64979
-#define XMLConst_SNoMatchingDOMVendor 64980
-#define XMLConst_SNoDOMNodeEx 64981
-#define XMLConst_SDOMNotSupported 64982
-#define XMLConst_SNodeExpected 64983
-#define XMLConst_SMSDOMNotInstalled 64984
-#define XMLConst_SErrorDownloadingURL 64985
-#define XMLConst_SUrlMonDllMissing 64986
-#define XMLConst_SNotActive 64987
-#define XMLConst_SNodeNotFound 64988
-#define XMLConst_SMissingNode 64989
-#define XMLConst_SNoAttributes 64990
-#define XMLConst_SInvalidNodeType 64991
-#define ezdmlstrs_srEzdmlConfirmClearOnOpen 64992
-#define ezdmlstrs_srEzdmlSaveingFileFmt 64993
-#define ezdmlstrs_srEzdmlSaveFile 64994
-#define ezdmlstrs_srEzdmlSaving 64995
-#define ezdmlstrs_srEzdmlNew 64996
-#define ezdmlstrs_srEzdmlFileNotFoundFmt 64997
-#define ezdmlstrs_srEzdmlTmpFileChangedFmt 64998
-#define ezdmlstrs_srEzdmlLoadTmpFileFailFmt 64999
-#define ezdmlstrs_srEzdmlConfirmOpenUrlFmt 65000
-#define ezdmlstrs_srEzdmlConfirmEditTextFmt 65001
-#define ezdmlstrs_srEzdmlConfirmEditedTextFmt 65002
-#define ezdmlstrs_srEzdmlAbout 65003
-#define ezdmlstrs_srEzdmlConfirmExit 65004
-#define ezdmlstrs_srEzdmlCreateGScriptTipFmt 65005
-#define ezdmlstrs_srEzdmlFileAlreadyOpenedFmt 65006
-#define xdom_SOddSizeInvalid 65007
-#define DBConsts_SInvalidFormatType 65008
-#define DBConsts_SCouldNotParseTimeStamp 65009
-#define DBConsts_SInvalidSqlTimeStamp 65010
-#define ComConst_SOleError 65011
-#define ComConst_SNoMethod 65012
-#define ComConst_SVarNotObject 65013
-#define ComConst_STooManyParams 65014
-#define ezdmlstrs_srEzdmlAppTitle 65015
-#define ezdmlstrs_srEzdmlAbortSaving 65016
-#define ezdmlstrs_srEzdmlSaved 65017
-#define ezdmlstrs_srEzdmlExiting 65018
-#define ezdmlstrs_srEzdmlOpeningFileFmt 65019
-#define ezdmlstrs_srEzdmlOpenFile 65020
-#define ezdmlstrs_srEzdmlOpening 65021
-#define ezdmlstrs_srEzdmlAbortOpening 65022
-#define ezdmlstrs_srEzdmlConfirmClearAll 65023
-#define DBConsts_SExprNoAggFilter 65024
-#define DBConsts_SExprEmptyInList 65025
-#define DBConsts_SInvalidKeywordUse 65026
-#define DBConsts_STextFalse 65027
-#define DBConsts_STextTrue 65028
-#define DBConsts_SParameterNotFound 65029
-#define DBConsts_SInvalidVersion 65030
-#define DBConsts_SBadFieldType 65031
-#define DBConsts_SProviderSQLNotSupported 65032
-#define DBConsts_SProviderExecuteNotSupported 65033
-#define DBConsts_SExprNoAggOnCalcs 65034
-#define DBConsts_SDataSetUnidirectional 65035
-#define DBConsts_SUnassignedVar 65036
-#define DBConsts_SRecordNotFound 65037
-#define DBConsts_SBcdOverflow 65038
-#define DBConsts_SInvalidBcdValue 65039
-#define DBConsts_SExprStringError 65040
-#define DBConsts_SExprInvalidChar 65041
-#define DBConsts_SExprNoLParen 65042
-#define DBConsts_SExprNoRParen 65043
-#define DBConsts_SExprNoRParenOrComma 65044
-#define DBConsts_SExprExpected 65045
-#define DBConsts_SExprBadField 65046
-#define DBConsts_SExprBadNullTest 65047
-#define DBConsts_SExprRangeError 65048
-#define DBConsts_SExprIncorrect 65049
-#define DBConsts_SExprNothing 65050
-#define DBConsts_SExprTypeMis 65051
-#define DBConsts_SExprBadScope 65052
-#define DBConsts_SExprNoArith 65053
-#define DBConsts_SExprNotAgg 65054
-#define DBConsts_SExprBadConst 65055
-#define DBConsts_SInvalidCalcType 65056
-#define DBConsts_SFieldReadOnly 65057
-#define DBConsts_SDuplicateIndexName 65058
-#define DBConsts_SNoIndexForFields 65059
-#define DBConsts_SIndexNotFound 65060
-#define DBConsts_SCircularDataLink 65061
-#define DBConsts_SLookupInfoError 65062
-#define DBConsts_SDataSourceChange 65063
-#define DBConsts_SDataSetOpen 65064
-#define DBConsts_SNotEditing 65065
-#define DBConsts_SDataSetClosed 65066
-#define DBConsts_SDataSetEmpty 65067
-#define DBConsts_SDataSetReadOnly 65068
-#define DBConsts_SNestedDataSetClass 65069
-#define DBConsts_SExprTermination 65070
-#define DBConsts_SExprNameError 65071
-#define DBConsts_SFieldNameMissing 65072
-#define DBConsts_SDuplicateFieldName 65073
-#define DBConsts_SFieldNotFound 65074
-#define DBConsts_SFieldAccessError 65075
-#define DBConsts_SFieldValueError 65076
-#define DBConsts_SFieldRangeError 65077
-#define DBConsts_SBcdFieldRangeError 65078
-#define DBConsts_SInvalidIntegerValue 65079
-#define DBConsts_SInvalidBoolValue 65080
-#define DBConsts_SInvalidFloatValue 65081
-#define DBConsts_SFieldTypeMismatch 65082
-#define DBConsts_SFieldSizeMismatch 65083
-#define DBConsts_SInvalidVarByteArray 65084
-#define DBConsts_SFieldOutOfRange 65085
-#define DBConsts_SFieldRequired 65086
-#define DBConsts_SDataSetMissing 65087
-#define dmlstrs_srBatchTablesNotSelected 65088
-#define dmlstrs_srBatchRemoveFieldNamePrompt 65089
-#define dmlstrs_srBatchOpResultFmt 65090
-#define dmlstrs_srImportDatabase 65091
-#define dmlstrs_srGenerateSql 65092
-#define dmlstrs_srBackupDatabase 65093
-#define dmlstrs_srRestoreDatabase 65094
-#define dmlstrs_srWritingDataFmt 65095
-#define dmlstrs_srReadingDataFmt 65096
-#define dmlstrs_srModifyDatabaseWarning 65097
-#define dmlstrs_srRestoreDatabaseWarning 65098
-#define dmlstrs_srRenameToDulObjleWarning 65099
-#define dmlstrs_srRenameFromDulObjleWarning 65100
-#define DBConsts_SInvalidFieldSize 65101
-#define DBConsts_SInvalidFieldKind 65102
-#define DBConsts_SUnknownFieldType 65103
-#define dmlstrs_srStep 65104
-#define dmlstrs_srDefaultFontName 65105
-#define dmlstrs_srCapClose 65106
-#define dmlstrs_srCapOk 65107
-#define dmlstrs_srCapCancel 65108
-#define dmlstrs_srDmlPrimaryKey 65109
-#define dmlstrs_srDmlForeignKey 65110
-#define dmlstrs_srDmlNoIndex 65111
-#define dmlstrs_srDmlUniqueIndex 65112
-#define dmlstrs_srDmlNormalIndex 65113
-#define dmlstrs_srDmlAddLink 65114
-#define dmlstrs_srDmlEditLink 65115
-#define dmlstrs_srDmlAll 65116
-#define dmlstrs_srDmlSearchNotFound 65117
-#define dmlstrs_srBatchAddFields 65118
-#define dmlstrs_srBatchRemoveFields 65119
-#define dmlstrs_srHours 65120
-#define dmlstrs_srMinutes 65121
-#define dmlstrs_srSeconds 65122
-#define dmlstrs_srEstimating 65123
-#define dmlstrs_srCanInitWaitWnd 65124
-#define dmlstrs_srViewModelDiagram 65125
-#define dmlstrs_srViewProperties 65126
-#define dmlstrs_srConfirmAbort 65127
-#define dmlstrs_srCapAbort 65128
-#define dmlstrs_srInvalidTableNameWarningFmt 65129
-#define dmlstrs_srInvalidFieldNameWarningFmt 65130
-#define dmlstrs_srDuplicateFieldNameWarningFmt 65131
-#define dmlstrs_srRearrangeObjs 65132
-#define dmlstrs_srTable 65133
-#define dmlstrs_srText 65134
-#define dmlstrs_srLink 65135
-#define dmlstrs_srConfirmOpenXlsAfterExport 65136
-#define dmlstrs_srFilter 65137
-#define dmlstrs_srFieldName 65138
-#define dmlstrs_srLogicName 65139
-#define dmlstrs_srDataType 65140
-#define dmlstrs_srDataLength 65141
-#define dmlstrs_srConstraint 65142
-#define dmlstrs_srComments 65143
-#define dmlstrs_srGeneratingSqlFmt 65144
-#define dmlstrs_srCheckingDataFmt 65145
-#define dmlstrs_srExecutingSqlFmt 65146
-#define dmlstrs_srConfirmSkipErrorFmt 65147
-#define dmlstrs_srStrAborted 65148
-#define dmlstrs_srStrFinished 65149
-#define dmlstrs_srRefreshingPrompt 65150
-#define dmlstrs_srDays 65151
-#define dmlstrs_srConfirmDeleteCountFmt 65152
-#define dmlstrs_srNewDmlTable 65153
-#define dmlstrs_srNewDmlTbPrompt 65154
-#define dmlstrs_srNewDmlText 65155
-#define dmlstrs_srNewDmlTextPrompt 65156
-#define dmlstrs_srConfirmDMLBriefMode 65157
-#define dmlstrs_srDmlGraphStatusFmt 65158
-#define dmlstrs_srDmlSelectedCountFmt 65159
-#define dmlstrs_srImportingObjsFmt 65160
-#define dmlstrs_srNewTableNameFmt 65161
-#define dmlstrs_srNewTextNameFmt 65162
-#define dmlstrs_srNewFieldNameFmt 65163
-#define dmlstrs_srNewDiagramNameFmt 65164
-#define dmlstrs_srNewTableDesc 65165
-#define dmlstrs_srConfirmDeleteSelectedNode 65166
-#define dmlstrs_srCannotExportEmptySelection 65167
+#define VDBConsts_SPriorRecord 64784
+#define VDBConsts_SNextRecord 64785
+#define VDBConsts_SLastRecord 64786
+#define VDBConsts_SInsertRecord 64787
+#define VDBConsts_SDeleteRecord 64788
+#define VDBConsts_SEditRecord 64789
+#define VDBConsts_SPostEdit 64790
+#define VDBConsts_SCancelEdit 64791
+#define VDBConsts_SRefreshRecord 64792
+#define VDBConsts_SDeleteRecordQuestion 64793
+#define VDBConsts_SDeleteMultipleRecordsQuestion 64794
+#define VDBConsts_SDataSourceFixed 64795
+#define VDBConsts_SPropDefByLookup 64796
+#define VDBConsts_STooManyColumns 64797
+#define VDBConsts_SRemoteLogin 64798
+#define ezdmlstrs_srEzdmlFileNotFoundFmt 64800
+#define ezdmlstrs_srEzdmlTmpFileChangedFmt 64801
+#define ezdmlstrs_srEzdmlLoadTmpFileFailFmt 64802
+#define ezdmlstrs_srEzdmlConfirmOpenUrlFmt 64803
+#define ezdmlstrs_srEzdmlConfirmEditTextFmt 64804
+#define ezdmlstrs_srEzdmlConfirmEditedTextFmt 64805
+#define ezdmlstrs_srEzdmlAbout 64806
+#define ezdmlstrs_srEzdmlConfirmExit 64807
+#define ezdmlstrs_srEzdmlCreateGScriptTipFmt 64808
+#define ezdmlstrs_srEzdmlFileAlreadyOpenedFmt 64809
+#define mysql_sLibMySql_Undefined 64810
+#define mysql_sLibMySql_Incompatible 64811
+#define mysql_sLibMySql_Version_Incompatible 64812
+#define mysql_EProcNotFound 64813
+#define mysql_ELibraryNotFound 64814
+#define VDBConsts_SFirstRecord 64815
+#define xdom_SCapacityLessSize 64816
+#define xdom_STargetNil 64817
+#define ezdmlstrs_srEzdmlAppTitle 64818
+#define ezdmlstrs_srEzdmlAbortSaving 64819
+#define ezdmlstrs_srEzdmlSaved 64820
+#define ezdmlstrs_srEzdmlExiting 64821
+#define ezdmlstrs_srEzdmlOpeningFileFmt 64822
+#define ezdmlstrs_srEzdmlOpenFile 64823
+#define ezdmlstrs_srEzdmlOpening 64824
+#define ezdmlstrs_srEzdmlAbortOpening 64825
+#define ezdmlstrs_srEzdmlConfirmClearAll 64826
+#define ezdmlstrs_srEzdmlConfirmClearOnOpen 64827
+#define ezdmlstrs_srEzdmlSaveingFileFmt 64828
+#define ezdmlstrs_srEzdmlSaveFile 64829
+#define ezdmlstrs_srEzdmlSaving 64830
+#define ezdmlstrs_srEzdmlNew 64831
+#define ADOConst_SRecordsetNotOpen 64832
+#define ADOConst_sNameAttr 64833
+#define ADOConst_sValueAttr 64834
+#define ide_editor_STR_TEXT_NOTFOUND 64835
+#define ide_editor_STR_UNNAMED 64836
+#define ide_editor_STR_SUCCESSFULLY_COMPILED 64837
+#define ide_editor_STR_PS_EXECUTING 64838
+#define ide_editor_STR_SUCCESSFULLY_EXECUTED 64839
+#define ide_editor_STR_RUNTIME_ERROR 64840
+#define ide_editor_STR_INPUTBOX_TITLE 64841
+#define ide_editor_STR_NOTSAVED 64842
+#define JConsts_sChangeJPGSize 64843
+#define JConsts_sJPEGError 64844
+#define JConsts_sJPEGImageFile 64845
+#define xdom_SOddSizeInvalid 64846
+#define xdom_SNegativeSizeInvalid 64847
+#define XMLConst_SNodeReadOnly 64848
+#define XMLConst_SNoRefresh 64849
+#define XMLConst_SMissingFileName 64850
+#define XMLConst_SLine 64851
+#define ADOConst_SMissingConnection 64852
+#define ADOConst_SNoDetailFilter 64853
+#define ADOConst_SBookmarksRequired 64854
+#define ADOConst_SMissingCommandText 64855
+#define ADOConst_SNoResultSet 64856
+#define ADOConst_SADOCreateError 64857
+#define ADOConst_SEventsNotSupported 64858
+#define ADOConst_SUsupportedFieldType 64859
+#define ADOConst_SNoMatchingADOType 64860
+#define ADOConst_SConnectionRequired 64861
+#define ADOConst_SCantRequery 64862
+#define ADOConst_SNoFilterOptions 64863
+#define XMLConst_SDuplicateRegistration 64864
+#define XMLConst_SNoMatchingDOMVendor 64865
+#define XMLConst_SNoDOMNodeEx 64866
+#define XMLConst_SDOMNotSupported 64867
+#define XMLConst_SNodeExpected 64868
+#define XMLConst_SMSDOMNotInstalled 64869
+#define XMLConst_SErrorDownloadingURL 64870
+#define XMLConst_SUrlMonDllMissing 64871
+#define XMLConst_SNotActive 64872
+#define XMLConst_SNodeNotFound 64873
+#define XMLConst_SMissingNode 64874
+#define XMLConst_SNoAttributes 64875
+#define XMLConst_SInvalidNodeType 64876
+#define XMLConst_SMismatchedRegItems 64877
+#define XMLConst_SNotSingleTextNode 64878
+#define XMLConst_SNoDOMParseOptions 64879
+#define uPSPreProcessor_RPS_IncludeNotFound 64880
+#define uPSPreProcessor_RPS_DefineTooManyParameters 64881
+#define uPSPreProcessor_RPS_NoIfdefForEndif 64882
+#define uPSPreProcessor_RPS_NoIfdefForElse 64883
+#define uPSPreProcessor_RPS_ElseTwice 64884
+#define uPSPreProcessor_RPS_UnknownCompilerDirective 64885
+#define uPSPreProcessor_RPs_DefineNotClosed 64886
+#define uPSC_dll_RPS_Invalid_External 64887
+#define uPSC_dll_RPS_InvalidCallingConvention 64888
+#define uPSComponent_RPS_UnableToReadVariant 64889
+#define uPSComponent_RPS_UnableToWriteVariant 64890
+#define uPSComponent_RPS_ScripEngineAlreadyRunning 64891
+#define uPSComponent_RPS_ScriptNotCompiled 64892
+#define uPSComponent_RPS_NotRunning 64893
+#define uPSComponent_RPS_UnknownIdentifier 64894
+#define uPSComponent_RPS_NoScript 64895
+#define uPSCompiler_RPS_UnknownError 64896
+#define uPSCompiler_RPS_NotAllowed 64897
+#define uPSCompiler_RPS_UnitNotFound 64898
+#define uPSCompiler_RPS_Hint 64899
+#define uPSCompiler_RPS_VariableNotUsed 64900
+#define uPSCompiler_RPS_FunctionNotUsed 64901
+#define uPSCompiler_RPS_UnknownHint 64902
+#define uPSCompiler_RPS_Warning 64903
+#define uPSCompiler_RPS_CalculationAlwaysEvaluatesTo 64904
+#define uPSCompiler_RPS_IsNotNeeded 64905
+#define uPSCompiler_RPS_AbstractClass 64906
+#define uPSCompiler_RPS_UnknownWarning 64907
+#define uPSCompiler_RPS_NotArrayProperty 64908
+#define uPSCompiler_RPS_NotProperty 64909
+#define uPSCompiler_RPS_UnknownProperty 64910
+#define uPSPreProcessor_RPS_TooManyNestedInclude 64911
+#define uPSCompiler_RPS_CloseBlockExpected 64912
+#define uPSCompiler_RPS_VariableExpected 64913
+#define uPSCompiler_RPS_StringExpected 64914
+#define uPSCompiler_RPS_EndExpected 64915
+#define uPSCompiler_RPS_UnSetLabel 64916
+#define uPSCompiler_RPS_NotInLoop 64917
+#define uPSCompiler_RPS_InvalidJump 64918
+#define uPSCompiler_RPS_OpenBlockExpected 64919
+#define uPSCompiler_RPS_WriteOnlyProperty 64920
+#define uPSCompiler_RPS_ReadOnlyProperty 64921
+#define uPSCompiler_RPS_ClassTypeExpected 64922
+#define uPSCompiler_RPS_DivideByZero 64923
+#define uPSCompiler_RPS_MathError 64924
+#define uPSCompiler_RPS_UnsatisfiedForward 64925
+#define uPSCompiler_RPS_ForwardParameterMismatch 64926
+#define uPSCompiler_RPS_InvalidNumberOfParameter 64927
+#define uPSCompiler_RPS_PeriodExpected 64928
+#define uPSCompiler_RPS_DuplicateIdent 64929
+#define uPSCompiler_RPS_ColonExpected 64930
+#define uPSCompiler_RPS_UnknownType 64931
+#define uPSCompiler_RPS_CloseRoundExpected 64932
+#define uPSCompiler_RPS_TypeMismatch 64933
+#define uPSCompiler_RPS_InternalError 64934
+#define uPSCompiler_RPS_AssignmentExpected 64935
+#define uPSCompiler_RPS_ThenExpected 64936
+#define uPSCompiler_RPS_DoExpected 64937
+#define uPSCompiler_RPS_NoResult 64938
+#define uPSCompiler_RPS_OpenRoundExpected 64939
+#define uPSCompiler_RPS_CommaExpected 64940
+#define uPSCompiler_RPS_ToExpected 64941
+#define uPSCompiler_RPS_IsExpected 64942
+#define uPSCompiler_RPS_OfExpected 64943
+#define uPSCompiler_RPS_InvalidTypeForVar 64944
+#define uPSCompiler_RPS_InvalidType 64945
+#define uPSCompiler_RPS_UnableToRegisterType 64946
+#define uPSCompiler_RPS_UnknownInterface 64947
+#define uPSCompiler_RPS_ConstantValueMismatch 64948
+#define uPSCompiler_RPS_ConstantValueNotAssigned 64949
+#define uPSCompiler_RPS_Error 64950
+#define uPSCompiler_RPS_UnknownIdentifier 64951
+#define uPSCompiler_RPS_IdentifierExpected 64952
+#define uPSCompiler_RPS_CommentError 64953
+#define uPSCompiler_RPS_StringError 64954
+#define uPSCompiler_RPS_CharError 64955
+#define uPSCompiler_RPS_SyntaxError 64956
+#define uPSCompiler_RPS_EOF 64957
+#define uPSCompiler_RPS_SemiColonExpected 64958
+#define uPSCompiler_RPS_BeginExpected 64959
+#define uPSRuntime_RPS_OutofRecordRange 64960
+#define uPSRuntime_RPS_NullPointerException 64961
+#define uPSRuntime_RPS_NullVariantError 64962
+#define uPSRuntime_RPS_OutOfMemory 64963
+#define uPSRuntime_RPS_InterfaceNotSupported 64964
+#define uPSRuntime_RPS_UnknownError 64965
+#define uPSRuntime_RPS_InvalidArray 64966
+#define uPSRuntime_RPS_OutOfStringRange 64967
+#define uPSRuntime_RPS_CannotCastInterface 64968
+#define uPSRuntime_RPS_CapacityLength 64969
+#define uPSRuntime_RPS_NILInterfaceException 64970
+#define uPSRuntime_RPS_UnknownMethod 64971
+#define uPSDebugger_RPS_ExpectedReturnAddressStackBase 64972
+#define uPSCompiler_RPS_OnUseEventOnly 64973
+#define uPSCompiler_RPS_UnableToRegisterFunction 64974
+#define uPSCompiler_RPS_UnableToRegisterConst 64975
+#define uPSRuntime_RPS_InvalidType 64976
+#define uPSRuntime_RPS_InternalError 64977
+#define uPSRuntime_RPS_InvalidHeader 64978
+#define uPSRuntime_RPS_InvalidOpcode 64979
+#define uPSRuntime_RPS_InvalidOpcodeParameter 64980
+#define uPSRuntime_RPS_NoMainProc 64981
+#define uPSRuntime_RPS_OutOfGlobalVarsRange 64982
+#define uPSRuntime_RPS_OutOfProcRange 64983
+#define uPSRuntime_RPS_OutOfRange 64984
+#define uPSRuntime_RPS_OutOfStackRange 64985
+#define uPSRuntime_RPS_TypeMismatch 64986
+#define uPSRuntime_RPS_UnexpectedEof 64987
+#define uPSRuntime_RPS_VersionError 64988
+#define uPSRuntime_RPS_DivideByZero 64989
+#define uPSRuntime_RPS_MathError 64990
+#define uPSRuntime_RPS_CouldNotCallProc 64991
+#define SynEditStrConst_SYNS_AttrSpace 64992
+#define SynEditStrConst_SYNS_AttrString 64993
+#define SynEditStrConst_SYNS_AttrSymbol 64994
+#define SynEditStrConst_SYNS_ScrollInfoFmt 64995
+#define SynEditStrConst_SYNS_ScrollInfoFmtTop 64996
+#define SynEditStrConst_SYNS_EDuplicateShortcut 64997
+#define SynEditStrConst_SYNS_FilterPascal 64998
+#define SynEditStrConst_SYNS_LangPascal 64999
+#define SynEditTextBuffer_SListIndexOutOfBounds 65000
+#define SynEditTextBuffer_SInvalidCapacity 65001
+#define uPSUtils_RPS_InvalidFloat 65002
+#define uPSRuntime_RPS_UnknownIdentifier 65003
+#define uPSRuntime_RPS_Exception 65004
+#define uPSRuntime_RPS_Invalid 65005
+#define uPSRuntime_RPS_NoError 65006
+#define uPSRuntime_RPS_CannotImport 65007
+#define dmlstrs_srRestoreDatabase 65008
+#define dmlstrs_srWritingDataFmt 65009
+#define dmlstrs_srReadingDataFmt 65010
+#define dmlstrs_srModifyDatabaseWarning 65011
+#define dmlstrs_srRestoreDatabaseWarning 65012
+#define dmlstrs_srRenameToDulObjleWarning 65013
+#define dmlstrs_srRenameFromDulObjleWarning 65014
+#define SynEditStrConst_SYNS_AttrAssembler 65015
+#define SynEditStrConst_SYNS_AttrCharacter 65016
+#define SynEditStrConst_SYNS_AttrComment 65017
+#define SynEditStrConst_SYNS_AttrFloat 65018
+#define SynEditStrConst_SYNS_AttrHexadecimal 65019
+#define SynEditStrConst_SYNS_AttrIdentifier 65020
+#define SynEditStrConst_SYNS_AttrNumber 65021
+#define SynEditStrConst_SYNS_AttrPreprocessor 65022
+#define SynEditStrConst_SYNS_AttrReservedWord 65023
+#define dmlstrs_srDmlForeignKey 65024
+#define dmlstrs_srDmlNoIndex 65025
+#define dmlstrs_srDmlUniqueIndex 65026
+#define dmlstrs_srDmlNormalIndex 65027
+#define dmlstrs_srDmlAddLink 65028
+#define dmlstrs_srDmlEditLink 65029
+#define dmlstrs_srDmlAll 65030
+#define dmlstrs_srDmlSearchNotFound 65031
+#define dmlstrs_srBatchAddFields 65032
+#define dmlstrs_srBatchRemoveFields 65033
+#define dmlstrs_srBatchTablesNotSelected 65034
+#define dmlstrs_srBatchRemoveFieldNamePrompt 65035
+#define dmlstrs_srBatchOpResultFmt 65036
+#define dmlstrs_srImportDatabase 65037
+#define dmlstrs_srGenerateSql 65038
+#define dmlstrs_srBackupDatabase 65039
+#define dmlstrs_srViewProperties 65040
+#define dmlstrs_srConfirmAbort 65041
+#define dmlstrs_srCapAbort 65042
+#define dmlstrs_srInvalidTableNameWarningFmt 65043
+#define dmlstrs_srInvalidFieldNameWarningFmt 65044
+#define dmlstrs_srDuplicateFieldNameWarningFmt 65045
+#define dmlstrs_srRearrangeObjs 65046
+#define dmlstrs_srTable 65047
+#define dmlstrs_srText 65048
+#define dmlstrs_srLink 65049
+#define dmlstrs_srStep 65050
+#define dmlstrs_srDefaultFontName 65051
+#define dmlstrs_srCapClose 65052
+#define dmlstrs_srCapOk 65053
+#define dmlstrs_srCapCancel 65054
+#define dmlstrs_srDmlPrimaryKey 65055
+#define dmlstrs_srConstraint 65056
+#define dmlstrs_srComments 65057
+#define dmlstrs_srGeneratingSqlFmt 65058
+#define dmlstrs_srCheckingDataFmt 65059
+#define dmlstrs_srExecutingSqlFmt 65060
+#define dmlstrs_srConfirmSkipErrorFmt 65061
+#define dmlstrs_srStrAborted 65062
+#define dmlstrs_srStrFinished 65063
+#define dmlstrs_srRefreshingPrompt 65064
+#define dmlstrs_srDays 65065
+#define dmlstrs_srHours 65066
+#define dmlstrs_srMinutes 65067
+#define dmlstrs_srSeconds 65068
+#define dmlstrs_srEstimating 65069
+#define dmlstrs_srCanInitWaitWnd 65070
+#define dmlstrs_srViewModelDiagram 65071
+#define dmlstrs_srDmlGraphStatusFmt 65072
+#define dmlstrs_srDmlSelectedCountFmt 65073
+#define dmlstrs_srImportingObjsFmt 65074
+#define dmlstrs_srNewTableNameFmt 65075
+#define dmlstrs_srNewTextNameFmt 65076
+#define dmlstrs_srNewFieldNameFmt 65077
+#define dmlstrs_srNewDiagramNameFmt 65078
+#define dmlstrs_srNewTableDesc 65079
+#define dmlstrs_srConfirmDeleteSelectedNode 65080
+#define dmlstrs_srCannotExportEmptySelection 65081
+#define dmlstrs_srConfirmOpenXlsAfterExport 65082
+#define dmlstrs_srFilter 65083
+#define dmlstrs_srFieldName 65084
+#define dmlstrs_srLogicName 65085
+#define dmlstrs_srDataType 65086
+#define dmlstrs_srDataLength 65087
+#define ComConst_SOleError 65088
+#define ComConst_SNoMethod 65089
+#define ComConst_SVarNotObject 65090
+#define ComConst_STooManyParams 65091
+#define dmlstrs_srDmlSelectedObj 65092
+#define dmlstrs_srDmlProgressFinished 65093
+#define dmlstrs_srConfirmRearrangeAll 65094
+#define dmlstrs_srConfirmRearrangeSelectedFmt 65095
+#define dmlstrs_srErrCanOnlyLinkTwoEntities 65096
+#define dmlstrs_srConfirmDeleteObjFmt 65097
+#define dmlstrs_srConfirmDeleteCountFmt 65098
+#define dmlstrs_srNewDmlTable 65099
+#define dmlstrs_srNewDmlTbPrompt 65100
+#define dmlstrs_srNewDmlText 65101
+#define dmlstrs_srNewDmlTextPrompt 65102
+#define dmlstrs_srConfirmDMLBriefMode 65103
+#define DBConsts_STextFalse 65104
+#define DBConsts_STextTrue 65105
+#define DBConsts_SParameterNotFound 65106
+#define DBConsts_SInvalidVersion 65107
+#define DBConsts_SBadFieldType 65108
+#define DBConsts_SProviderSQLNotSupported 65109
+#define DBConsts_SProviderExecuteNotSupported 65110
+#define DBConsts_SExprNoAggOnCalcs 65111
+#define DBConsts_SDataSetUnidirectional 65112
+#define DBConsts_SUnassignedVar 65113
+#define DBConsts_SRecordNotFound 65114
+#define DBConsts_SBcdOverflow 65115
+#define DBConsts_SInvalidBcdValue 65116
+#define DBConsts_SInvalidFormatType 65117
+#define DBConsts_SCouldNotParseTimeStamp 65118
+#define DBConsts_SInvalidSqlTimeStamp 65119
+#define DBConsts_SExprNoRParen 65120
+#define DBConsts_SExprNoRParenOrComma 65121
+#define DBConsts_SExprExpected 65122
+#define DBConsts_SExprBadField 65123
+#define DBConsts_SExprBadNullTest 65124
+#define DBConsts_SExprRangeError 65125
+#define DBConsts_SExprIncorrect 65126
+#define DBConsts_SExprNothing 65127
+#define DBConsts_SExprTypeMis 65128
+#define DBConsts_SExprBadScope 65129
+#define DBConsts_SExprNoArith 65130
+#define DBConsts_SExprNotAgg 65131
+#define DBConsts_SExprBadConst 65132
+#define DBConsts_SExprNoAggFilter 65133
+#define DBConsts_SExprEmptyInList 65134
+#define DBConsts_SInvalidKeywordUse 65135
+#define DBConsts_SNoIndexForFields 65136
+#define DBConsts_SIndexNotFound 65137
+#define DBConsts_SCircularDataLink 65138
+#define DBConsts_SLookupInfoError 65139
+#define DBConsts_SDataSourceChange 65140
+#define DBConsts_SDataSetOpen 65141
+#define DBConsts_SNotEditing 65142
+#define DBConsts_SDataSetClosed 65143
+#define DBConsts_SDataSetEmpty 65144
+#define DBConsts_SDataSetReadOnly 65145
+#define DBConsts_SNestedDataSetClass 65146
+#define DBConsts_SExprTermination 65147
+#define DBConsts_SExprNameError 65148
+#define DBConsts_SExprStringError 65149
+#define DBConsts_SExprInvalidChar 65150
+#define DBConsts_SExprNoLParen 65151
+#define DBConsts_SFieldAccessError 65152
+#define DBConsts_SFieldValueError 65153
+#define DBConsts_SFieldRangeError 65154
+#define DBConsts_SBcdFieldRangeError 65155
+#define DBConsts_SInvalidIntegerValue 65156
+#define DBConsts_SInvalidBoolValue 65157
+#define DBConsts_SInvalidFloatValue 65158
+#define DBConsts_SFieldTypeMismatch 65159
+#define DBConsts_SFieldSizeMismatch 65160
+#define DBConsts_SInvalidVarByteArray 65161
+#define DBConsts_SFieldOutOfRange 65162
+#define DBConsts_SFieldRequired 65163
+#define DBConsts_SDataSetMissing 65164
+#define DBConsts_SInvalidCalcType 65165
+#define DBConsts_SFieldReadOnly 65166
+#define DBConsts_SDuplicateIndexName 65167
 #define ComStrs_sTabFailRetrieve 65168
 #define ComStrs_sTabFailGetObject 65169
 #define ComStrs_sTabFailSet 65170
@@ -401,12 +401,12 @@
 #define ComStrs_sInvalidOwner 65175
 #define ComStrs_sPageIndexError 65176
 #define ComStrs_sInvalidComCtl32 65177
-#define dmlstrs_srDmlSelectedObj 65178
-#define dmlstrs_srDmlProgressFinished 65179
-#define dmlstrs_srConfirmRearrangeAll 65180
-#define dmlstrs_srConfirmRearrangeSelectedFmt 65181
-#define dmlstrs_srErrCanOnlyLinkTwoEntities 65182
-#define dmlstrs_srConfirmDeleteObjFmt 65183
+#define DBConsts_SInvalidFieldSize 65178
+#define DBConsts_SInvalidFieldKind 65179
+#define DBConsts_SUnknownFieldType 65180
+#define DBConsts_SFieldNameMissing 65181
+#define DBConsts_SDuplicateFieldName 65182
+#define DBConsts_SFieldNotFound 65183
 #define ExtCtrls_clNameInactiveCaptionText 65184
 #define ExtCtrls_clNameInfoBk 65185
 #define ExtCtrls_clNameInfoText 65186
@@ -761,6 +761,11 @@
 #define SysConst_SEndOfFile 65535
 STRINGTABLE
 BEGIN
+	VDBConsts_SPriorRecord,	"Prior record"
+	VDBConsts_SNextRecord,	"Next record"
+	VDBConsts_SLastRecord,	"Last record"
+	VDBConsts_SInsertRecord,	"Insert record"
+	VDBConsts_SDeleteRecord,	"Delete record"
 	VDBConsts_SEditRecord,	"Edit record"
 	VDBConsts_SPostEdit,	"Post edit"
 	VDBConsts_SCancelEdit,	"Cancel edit"
@@ -771,11 +776,42 @@ BEGIN
 	VDBConsts_SPropDefByLookup,	"Property already defined by lookup field"
 	VDBConsts_STooManyColumns,	"Grid requested to display more than 256 columns"
 	VDBConsts_SRemoteLogin,	"Remote Login"
+	ezdmlstrs_srEzdmlFileNotFoundFmt,	"File not found %s"
+	ezdmlstrs_srEzdmlTmpFileChangedFmt,	"The file date of temp file %s conflicts with the source file, we strongly recommend to backup and check your files. Are you still want to load the temp file?\r\n(Yes=Open tmp file, No=Open source file, Cancel=Do not open)"
+	ezdmlstrs_srEzdmlLoadTmpFileFailFmt,	"Failed to load tmp file: %s\r\nError info: %s\r\nThis may cause by version error or file damage. Please try old version or delete the tmp file"
+	ezdmlstrs_srEzdmlConfirmOpenUrlFmt,	"Are you sure to open URL %s with your internet explorer?"
+	ezdmlstrs_srEzdmlConfirmEditTextFmt,	"Open %s to edit now?"
+	ezdmlstrs_srEzdmlConfirmEditedTextFmt,	"%s opened, please edit it now, and click OK to apply it when finished."
+	ezdmlstrs_srEzdmlAbout,	"EZDML V%s %s (Freeware)\r\nhttp://www.ezdml.com\r\nhttp://blog.csdn.net/huzgd/\r\nhuzzz@163.com\r\nQQ group: 344282607\r\nForum: http://www.ezdml.com/bbs"
+	ezdmlstrs_srEzdmlConfirmExit,	"Do you want to save data before exit?"
+	ezdmlstrs_srEzdmlCreateGScriptTipFmt,	"Global Script file (%s) not found, do you want to create it?"
+	ezdmlstrs_srEzdmlFileAlreadyOpenedFmt,	"File %s is already open in another EZDML process."
 	mysql_sLibMySql_Undefined,	"MySQL: libmysql not loaded"
 	mysql_sLibMySql_Incompatible,	"MySQL: A DLL was found but it is not compatible"
 	mysql_sLibMySql_Version_Incompatible,	"MySQL: libmysql %s is not compatible"
 	mysql_EProcNotFound,	"MySQL: Procedure \"%s\" not found in library \"%s\""
 	mysql_ELibraryNotFound,	"MySQL: Library \"%s\" not found"
+	VDBConsts_SFirstRecord,	"First record"
+	xdom_SCapacityLessSize,	"Capacity cannot be less than size"
+	xdom_STargetNil,	"Must have a target stream"
+	ezdmlstrs_srEzdmlAppTitle,	"EZDML"
+	ezdmlstrs_srEzdmlAbortSaving,	"Are you sure to abort saving?"
+	ezdmlstrs_srEzdmlSaved,	"Saved: "
+	ezdmlstrs_srEzdmlExiting,	"Exiting.."
+	ezdmlstrs_srEzdmlOpeningFileFmt,	"Opening file %s..."
+	ezdmlstrs_srEzdmlOpenFile,	"Open file"
+	ezdmlstrs_srEzdmlOpening,	"Opening..."
+	ezdmlstrs_srEzdmlAbortOpening,	"Are you sure to abort opening file?"
+	ezdmlstrs_srEzdmlConfirmClearAll,	"Create new file will clear all tables in the model file. Are you sure to continue?"
+	ezdmlstrs_srEzdmlConfirmClearOnOpen,	"Do you want to clear current model before open the file?"
+	ezdmlstrs_srEzdmlSaveingFileFmt,	"Saving file %s..."
+	ezdmlstrs_srEzdmlSaveFile,	"Save file"
+	ezdmlstrs_srEzdmlSaving,	"Saving..."
+	ezdmlstrs_srEzdmlNew,	"New File"
+	ADOConst_SRecordsetNotOpen,	"Recordset is not open"
+	ADOConst_sNameAttr,	"Name"
+	ADOConst_sValueAttr,	"Value"
+	ide_editor_STR_TEXT_NOTFOUND,	"Text not found: "
 	ide_editor_STR_UNNAMED,	"Unnamed"
 	ide_editor_STR_SUCCESSFULLY_COMPILED,	"Succesfully compiled"
 	ide_editor_STR_PS_EXECUTING,	"Executing..."
@@ -786,12 +822,12 @@ BEGIN
 	JConsts_sChangeJPGSize,	"Cannot change the size of a JPEG image"
 	JConsts_sJPEGError,	"JPEG error #%d"
 	JConsts_sJPEGImageFile,	"JPEG Image File"
-	VDBConsts_SFirstRecord,	"First record"
-	VDBConsts_SPriorRecord,	"Prior record"
-	VDBConsts_SNextRecord,	"Next record"
-	VDBConsts_SLastRecord,	"Last record"
-	VDBConsts_SInsertRecord,	"Insert record"
-	VDBConsts_SDeleteRecord,	"Delete record"
+	xdom_SOddSizeInvalid,	"Odd size not valid for WideString"
+	xdom_SNegativeSizeInvalid,	"Negative stream size invalid"
+	XMLConst_SNodeReadOnly,	"Node is readonly"
+	XMLConst_SNoRefresh,	"Refresh is only supported if the FileName or XML properties are set"
+	XMLConst_SMissingFileName,	"FileName cannot be blank"
+	XMLConst_SLine,	"Line"
 	ADOConst_SMissingConnection,	"Missing Connection or ConnectionString"
 	ADOConst_SNoDetailFilter,	"Filter property cannot be used for detail tables"
 	ADOConst_SBookmarksRequired,	"Dataset does not support bookmarks, which are required for multi-record data controls"
@@ -804,10 +840,22 @@ BEGIN
 	ADOConst_SConnectionRequired,	"A connection component is required for async ExecuteOptions"
 	ADOConst_SCantRequery,	"Cannot perform a requery after connection has changed"
 	ADOConst_SNoFilterOptions,	"FilterOptions are not supported"
-	ADOConst_SRecordsetNotOpen,	"Recordset is not open"
-	ADOConst_sNameAttr,	"Name"
-	ADOConst_sValueAttr,	"Value"
-	ide_editor_STR_TEXT_NOTFOUND,	"Text not found: "
+	XMLConst_SDuplicateRegistration,	"\"%s\" DOMImplementation already registered"
+	XMLConst_SNoMatchingDOMVendor,	"No matching DOM Vendor: \"%s\""
+	XMLConst_SNoDOMNodeEx,	"Selected DOM Vendor does not support this property or method"
+	XMLConst_SDOMNotSupported,	"Property or Method \"%s\" is not supported by DOM Vendor \"%s\""
+	XMLConst_SNodeExpected,	"Node cannot be null"
+	XMLConst_SMSDOMNotInstalled,	"Microsoft MSXML is not installed"
+	XMLConst_SErrorDownloadingURL,	"Error downloading URL: %s"
+	XMLConst_SUrlMonDllMissing,	"Unable to load %s"
+	XMLConst_SNotActive,	"No active document"
+	XMLConst_SNodeNotFound,	"Node \"%s\" not found"
+	XMLConst_SMissingNode,	"IDOMNode required"
+	XMLConst_SNoAttributes,	"Attributes are not supported on this node type"
+	XMLConst_SInvalidNodeType,	"Invalid node type"
+	XMLConst_SMismatchedRegItems,	"Mismatched paramaters to RegisterChildNodes"
+	XMLConst_SNotSingleTextNode,	"Element does not contain a single text node"
+	XMLConst_SNoDOMParseOptions,	"DOM Implementation does not support IDOMParseOptions"
 	uPSPreProcessor_RPS_IncludeNotFound,	"Unable to find file '%s' used from '%s'"
 	uPSPreProcessor_RPS_DefineTooManyParameters,	"Too many parameters at %d:%d"
 	uPSPreProcessor_RPS_NoIfdefForEndif,	"No IFDEF for ENDIF at %d:%d"
@@ -936,13 +984,13 @@ BEGIN
 	uPSRuntime_RPS_Invalid,	"[Invalid]"
 	uPSRuntime_RPS_NoError,	"No Error"
 	uPSRuntime_RPS_CannotImport,	"Cannot Import %s"
-	XMLConst_SMismatchedRegItems,	"Mismatched paramaters to RegisterChildNodes"
-	XMLConst_SNotSingleTextNode,	"Element does not contain a single text node"
-	XMLConst_SNoDOMParseOptions,	"DOM Implementation does not support IDOMParseOptions"
-	XMLConst_SNodeReadOnly,	"Node is readonly"
-	XMLConst_SNoRefresh,	"Refresh is only supported if the FileName or XML properties are set"
-	XMLConst_SMissingFileName,	"FileName cannot be blank"
-	XMLConst_SLine,	"Line"
+	dmlstrs_srRestoreDatabase,	"Restore database"
+	dmlstrs_srWritingDataFmt,	"%d/%d Backing up data...%s"
+	dmlstrs_srReadingDataFmt,	"%d/%d Restoring data...%s"
+	dmlstrs_srModifyDatabaseWarning,	"Warning: The database is about to be modified, make sure you have backed up your data before continue. Do you still want to modify database now?"
+	dmlstrs_srRestoreDatabaseWarning,	"Warning: The database is about to be restored, all data in selected tables will be lost. Do you still want to restore tables now?"
+	dmlstrs_srRenameToDulObjleWarning,	"Warning: Objects NAMED \"%s\" already exist, continue to rename current object will cause them sync with current object and LOST their origal properties!!! Are you sure to OVERWRITE all these objects?"
+	dmlstrs_srRenameFromDulObjleWarning,	"Warning: There are linked objects with the SAME NAME \"%s\", continue to rename current object will prevent them from syncing with current object. Are you sure to continue?"
 	SynEditStrConst_SYNS_AttrAssembler,	"Assembler"
 	SynEditStrConst_SYNS_AttrCharacter,	"Character"
 	SynEditStrConst_SYNS_AttrComment,	"Comment"
@@ -952,57 +1000,86 @@ BEGIN
 	SynEditStrConst_SYNS_AttrNumber,	"Number"
 	SynEditStrConst_SYNS_AttrPreprocessor,	"Preprocessor"
 	SynEditStrConst_SYNS_AttrReservedWord,	"Reserved Word"
-	xdom_SNegativeSizeInvalid,	"Negative stream size invalid"
-	xdom_SCapacityLessSize,	"Capacity cannot be less than size"
-	xdom_STargetNil,	"Must have a target stream"
-	XMLConst_SDuplicateRegistration,	"\"%s\" DOMImplementation already registered"
-	XMLConst_SNoMatchingDOMVendor,	"No matching DOM Vendor: \"%s\""
-	XMLConst_SNoDOMNodeEx,	"Selected DOM Vendor does not support this property or method"
-	XMLConst_SDOMNotSupported,	"Property or Method \"%s\" is not supported by DOM Vendor \"%s\""
-	XMLConst_SNodeExpected,	"Node cannot be null"
-	XMLConst_SMSDOMNotInstalled,	"Microsoft MSXML is not installed"
-	XMLConst_SErrorDownloadingURL,	"Error downloading URL: %s"
-	XMLConst_SUrlMonDllMissing,	"Unable to load %s"
-	XMLConst_SNotActive,	"No active document"
-	XMLConst_SNodeNotFound,	"Node \"%s\" not found"
-	XMLConst_SMissingNode,	"IDOMNode required"
-	XMLConst_SNoAttributes,	"Attributes are not supported on this node type"
-	XMLConst_SInvalidNodeType,	"Invalid node type"
-	ezdmlstrs_srEzdmlConfirmClearOnOpen,	"Do you want to clear current model before open the file?"
-	ezdmlstrs_srEzdmlSaveingFileFmt,	"Saving file %s..."
-	ezdmlstrs_srEzdmlSaveFile,	"Save file"
-	ezdmlstrs_srEzdmlSaving,	"Saving..."
-	ezdmlstrs_srEzdmlNew,	"New File"
-	ezdmlstrs_srEzdmlFileNotFoundFmt,	"File not found %s"
-	ezdmlstrs_srEzdmlTmpFileChangedFmt,	"The file date of temp file %s conflicts with the source file, we strongly recommend to backup and check your files. Are you still want to load the temp file?\r\n(Yes=Open tmp file, No=Open source file, Cancel=Do not open)"
-	ezdmlstrs_srEzdmlLoadTmpFileFailFmt,	"Failed to load tmp file: %s\r\nError info: %s\r\nThis may cause by version error or file damage. Please try old version or delete the tmp file"
-	ezdmlstrs_srEzdmlConfirmOpenUrlFmt,	"Are you sure to open URL %s with your internet explorer?"
-	ezdmlstrs_srEzdmlConfirmEditTextFmt,	"Open %s to edit now?"
-	ezdmlstrs_srEzdmlConfirmEditedTextFmt,	"%s opened, please edit it now, and click OK to apply it when finished."
-	ezdmlstrs_srEzdmlAbout,	"EZDML V%s %s (Freeware)\r\nhttp://www.ezdml.com\r\nhttp://blog.csdn.net/huzgd/\r\nhuzzz@163.com\r\nQQ group: 344282607\r\nForum: http://www.ezdml.com/bbs"
-	ezdmlstrs_srEzdmlConfirmExit,	"Do you want to save data before exit?"
-	ezdmlstrs_srEzdmlCreateGScriptTipFmt,	"Global Script file (%s) not found, do you want to create it?"
-	ezdmlstrs_srEzdmlFileAlreadyOpenedFmt,	"File %s is already open in another EZDML process."
-	xdom_SOddSizeInvalid,	"Odd size not valid for WideString"
-	DBConsts_SInvalidFormatType,	"Invalid format type for BCD"
-	DBConsts_SCouldNotParseTimeStamp,	"Could not parse SQL TimeStamp string"
-	DBConsts_SInvalidSqlTimeStamp,	"Invalid SQL date/time values"
+	dmlstrs_srDmlForeignKey,	"FK"
+	dmlstrs_srDmlNoIndex,	"No Index"
+	dmlstrs_srDmlUniqueIndex,	"Unique Index"
+	dmlstrs_srDmlNormalIndex,	"Normal Index"
+	dmlstrs_srDmlAddLink,	"Add Link"
+	dmlstrs_srDmlEditLink,	"Edit Link"
+	dmlstrs_srDmlAll,	"All"
+	dmlstrs_srDmlSearchNotFound,	"Not found"
+	dmlstrs_srBatchAddFields,	"Batch add fields"
+	dmlstrs_srBatchRemoveFields,	"Batch remove fields"
+	dmlstrs_srBatchTablesNotSelected,	"Please select at least two tables"
+	dmlstrs_srBatchRemoveFieldNamePrompt,	"Please enter a field-name to remove:"
+	dmlstrs_srBatchOpResultFmt,	"%d fields processed"
+	dmlstrs_srImportDatabase,	"Import Database"
+	dmlstrs_srGenerateSql,	"Generate Database"
+	dmlstrs_srBackupDatabase,	"Backup database"
+	dmlstrs_srViewProperties,	"View properties"
+	dmlstrs_srConfirmAbort,	"Are you sure to abort current process?"
+	dmlstrs_srCapAbort,	"Abort"
+	dmlstrs_srInvalidTableNameWarningFmt,	"Warning: Table name may be invalid - %s"
+	dmlstrs_srInvalidFieldNameWarningFmt,	"Warning: Field name may be invalid - %s"
+	dmlstrs_srDuplicateFieldNameWarningFmt,	"Warning: Duplicate field name - %s"
+	dmlstrs_srRearrangeObjs,	"Re-arrange objects"
+	dmlstrs_srTable,	"Table"
+	dmlstrs_srText,	"Text"
+	dmlstrs_srLink,	"Link"
+	dmlstrs_srStep,	"Step"
+	dmlstrs_srDefaultFontName,	"Tahoma"
+	dmlstrs_srCapClose,	"Close"
+	dmlstrs_srCapOk,	"OK"
+	dmlstrs_srCapCancel,	"Cancel"
+	dmlstrs_srDmlPrimaryKey,	"PK"
+	dmlstrs_srConstraint,	"Constraint"
+	dmlstrs_srComments,	"Comments"
+	dmlstrs_srGeneratingSqlFmt,	"%d/%d Generating SQL...%s"
+	dmlstrs_srCheckingDataFmt,	"%d/%d Checking data...%s"
+	dmlstrs_srExecutingSqlFmt,	"%d/%d Executing SQL...%s"
+	dmlstrs_srConfirmSkipErrorFmt,	"Error:\r\n%s\r\nContinue?"
+	dmlstrs_srStrAborted,	"Aborted"
+	dmlstrs_srStrFinished,	"Finished"
+	dmlstrs_srRefreshingPrompt,	"Refreshing, please wait.."
+	dmlstrs_srDays,	"Days"
+	dmlstrs_srHours,	"Hours"
+	dmlstrs_srMinutes,	"Minutes"
+	dmlstrs_srSeconds,	"Seconds"
+	dmlstrs_srEstimating,	"Estimating"
+	dmlstrs_srCanInitWaitWnd,	"Can not init waiting window, it may already be displayed or disabled."
+	dmlstrs_srViewModelDiagram,	"View diagram"
+	dmlstrs_srDmlGraphStatusFmt,	"Scale:%d%% Center:%d, %d"
+	dmlstrs_srDmlSelectedCountFmt,	"Selected: %d objects"
+	dmlstrs_srImportingObjsFmt,	"%d/%d Importing...%s"
+	dmlstrs_srNewTableNameFmt,	"Table%d"
+	dmlstrs_srNewTextNameFmt,	"Text%d"
+	dmlstrs_srNewFieldNameFmt,	"Field%d"
+	dmlstrs_srNewDiagramNameFmt,	"Model%d"
+	dmlstrs_srNewTableDesc,	"Id PKInteger\r\nRid FKInteger\r\nName S"
+	dmlstrs_srConfirmDeleteSelectedNode,	"Are you sure to delete selected objects?"
+	dmlstrs_srCannotExportEmptySelection,	"Please choose objects to export"
+	dmlstrs_srConfirmOpenXlsAfterExport,	"Export success. Open exported file now?"
+	dmlstrs_srFilter,	"Filter"
+	dmlstrs_srFieldName,	"Field Name"
+	dmlstrs_srLogicName,	"Logic Name"
+	dmlstrs_srDataType,	"Data Type"
+	dmlstrs_srDataLength,	"Length"
 	ComConst_SOleError,	"OLE error %.8x"
 	ComConst_SNoMethod,	"Method '%s' not supported by automation object"
 	ComConst_SVarNotObject,	"Variant does not reference an automation object"
 	ComConst_STooManyParams,	"Dispatch methods do not support more than 64 parameters"
-	ezdmlstrs_srEzdmlAppTitle,	"EZDML"
-	ezdmlstrs_srEzdmlAbortSaving,	"Are you sure to abort saving?"
-	ezdmlstrs_srEzdmlSaved,	"Saved: "
-	ezdmlstrs_srEzdmlExiting,	"Exiting.."
-	ezdmlstrs_srEzdmlOpeningFileFmt,	"Opening file %s..."
-	ezdmlstrs_srEzdmlOpenFile,	"Open file"
-	ezdmlstrs_srEzdmlOpening,	"Opening..."
-	ezdmlstrs_srEzdmlAbortOpening,	"Are you sure to abort opening file?"
-	ezdmlstrs_srEzdmlConfirmClearAll,	"Create new file will clear all tables in the model file. Are you sure to continue?"
-	DBConsts_SExprNoAggFilter,	"Aggregate expressions not allowed in filters"
-	DBConsts_SExprEmptyInList,	"IN predicate list may not be empty"
-	DBConsts_SInvalidKeywordUse,	"Invalid use of keyword"
+	dmlstrs_srDmlSelectedObj,	"Selected: "
+	dmlstrs_srDmlProgressFinished,	"Finish"
+	dmlstrs_srConfirmRearrangeAll,	"Are you sure to re-arrange all objects?"
+	dmlstrs_srConfirmRearrangeSelectedFmt,	"Are you sure to re-arrange selected %d objects?"
+	dmlstrs_srErrCanOnlyLinkTwoEntities,	"You can only add link between two entities"
+	dmlstrs_srConfirmDeleteObjFmt,	"Are you sure to delete object %s?"
+	dmlstrs_srConfirmDeleteCountFmt,	"Are you sure to delete selected %d objects?"
+	dmlstrs_srNewDmlTable,	"NewTable"
+	dmlstrs_srNewDmlTbPrompt,	"Enter the name of the new table:"
+	dmlstrs_srNewDmlText,	"NewText"
+	dmlstrs_srNewDmlTextPrompt,	"Enter the content of the new text:"
+	dmlstrs_srConfirmDMLBriefMode,	"Entering brief mode may cause the position of links reset. Continue?"
 	DBConsts_STextFalse,	"False"
 	DBConsts_STextTrue,	"True"
 	DBConsts_SParameterNotFound,	"Parameter '%s' not found"
@@ -1016,9 +1093,9 @@ BEGIN
 	DBConsts_SRecordNotFound,	"Record not found"
 	DBConsts_SBcdOverflow,	"BCD overflow"
 	DBConsts_SInvalidBcdValue,	"%s is not a valid BCD value"
-	DBConsts_SExprStringError,	"Unterminated string constant"
-	DBConsts_SExprInvalidChar,	"Invalid filter expression character: '%s'"
-	DBConsts_SExprNoLParen,	"'(' expected but %s found"
+	DBConsts_SInvalidFormatType,	"Invalid format type for BCD"
+	DBConsts_SCouldNotParseTimeStamp,	"Could not parse SQL TimeStamp string"
+	DBConsts_SInvalidSqlTimeStamp,	"Invalid SQL date/time values"
 	DBConsts_SExprNoRParen,	"')' expected but %s found"
 	DBConsts_SExprNoRParenOrComma,	"')' or ',' expected but %s found"
 	DBConsts_SExprExpected,	"Expression expected but %s found"
@@ -1032,9 +1109,9 @@ BEGIN
 	DBConsts_SExprNoArith,	"Arithmetic in filter expressions not supported"
 	DBConsts_SExprNotAgg,	"Expression is not an aggregate expression"
 	DBConsts_SExprBadConst,	"Constant is not correct type %s"
-	DBConsts_SInvalidCalcType,	"Field '%s' cannot be a calculated or lookup field"
-	DBConsts_SFieldReadOnly,	"Field '%s' cannot be modified"
-	DBConsts_SDuplicateIndexName,	"Duplicate index name '%s'"
+	DBConsts_SExprNoAggFilter,	"Aggregate expressions not allowed in filters"
+	DBConsts_SExprEmptyInList,	"IN predicate list may not be empty"
+	DBConsts_SInvalidKeywordUse,	"Invalid use of keyword"
 	DBConsts_SNoIndexForFields,	"No index for fields '%s'"
 	DBConsts_SIndexNotFound,	"Index '%s' not found"
 	DBConsts_SCircularDataLink,	"Circular datalinks are not allowed"
@@ -1048,9 +1125,9 @@ BEGIN
 	DBConsts_SNestedDataSetClass,	"Nested dataset must inherit from %s"
 	DBConsts_SExprTermination,	"Filter expression incorrectly terminated"
 	DBConsts_SExprNameError,	"Unterminated field name"
-	DBConsts_SFieldNameMissing,	"Field name missing"
-	DBConsts_SDuplicateFieldName,	"Duplicate field name '%s'"
-	DBConsts_SFieldNotFound,	"Field '%s' not found"
+	DBConsts_SExprStringError,	"Unterminated string constant"
+	DBConsts_SExprInvalidChar,	"Invalid filter expression character: '%s'"
+	DBConsts_SExprNoLParen,	"'(' expected but %s found"
 	DBConsts_SFieldAccessError,	"Cannot access field '%s' as type %s"
 	DBConsts_SFieldValueError,	"Invalid value for field '%s'"
 	DBConsts_SFieldRangeError,	"%g is not a valid value for field '%s'. The allowed range is %g to %g"
@@ -1064,86 +1141,9 @@ BEGIN
 	DBConsts_SFieldOutOfRange,	"Value of field '%s' is out of range"
 	DBConsts_SFieldRequired,	"Field '%s' must have a value"
 	DBConsts_SDataSetMissing,	"Field '%s' has no dataset"
-	dmlstrs_srBatchTablesNotSelected,	"Please select at least two tables"
-	dmlstrs_srBatchRemoveFieldNamePrompt,	"Please enter a field-name to remove:"
-	dmlstrs_srBatchOpResultFmt,	"%d fields processed"
-	dmlstrs_srImportDatabase,	"Import Database"
-	dmlstrs_srGenerateSql,	"Generate Database"
-	dmlstrs_srBackupDatabase,	"Backup database"
-	dmlstrs_srRestoreDatabase,	"Restore database"
-	dmlstrs_srWritingDataFmt,	"%d/%d Backing up data...%s"
-	dmlstrs_srReadingDataFmt,	"%d/%d Restoring data...%s"
-	dmlstrs_srModifyDatabaseWarning,	"Warning: The database is about to be modified, make sure you have backed up your data before continue. Do you still want to modify database now?"
-	dmlstrs_srRestoreDatabaseWarning,	"Warning: The database is about to be restored, all data in selected tables will be lost. Do you still want to restore tables now?"
-	dmlstrs_srRenameToDulObjleWarning,	"Warning: Objects NAMED \"%s\" already exist, continue to rename current object will cause them sync with current object and LOST their origal properties!!! Are you sure to OVERWRITE all these objects?"
-	dmlstrs_srRenameFromDulObjleWarning,	"Warning: There are linked objects with the SAME NAME \"%s\", continue to rename current object will prevent them from syncing with current object. Are you sure to continue?"
-	DBConsts_SInvalidFieldSize,	"Invalid field size"
-	DBConsts_SInvalidFieldKind,	"Invalid FieldKind"
-	DBConsts_SUnknownFieldType,	"Field '%s' is of an unknown type"
-	dmlstrs_srStep,	"Step"
-	dmlstrs_srDefaultFontName,	"Tahoma"
-	dmlstrs_srCapClose,	"Close"
-	dmlstrs_srCapOk,	"OK"
-	dmlstrs_srCapCancel,	"Cancel"
-	dmlstrs_srDmlPrimaryKey,	"PK"
-	dmlstrs_srDmlForeignKey,	"FK"
-	dmlstrs_srDmlNoIndex,	"No Index"
-	dmlstrs_srDmlUniqueIndex,	"Unique Index"
-	dmlstrs_srDmlNormalIndex,	"Normal Index"
-	dmlstrs_srDmlAddLink,	"Add Link"
-	dmlstrs_srDmlEditLink,	"Edit Link"
-	dmlstrs_srDmlAll,	"All"
-	dmlstrs_srDmlSearchNotFound,	"Not found"
-	dmlstrs_srBatchAddFields,	"Batch add fields"
-	dmlstrs_srBatchRemoveFields,	"Batch remove fields"
-	dmlstrs_srHours,	"Hours"
-	dmlstrs_srMinutes,	"Minutes"
-	dmlstrs_srSeconds,	"Seconds"
-	dmlstrs_srEstimating,	"Estimating"
-	dmlstrs_srCanInitWaitWnd,	"Can not init waiting window, it may already be displayed or disabled."
-	dmlstrs_srViewModelDiagram,	"View diagram"
-	dmlstrs_srViewProperties,	"View properties"
-	dmlstrs_srConfirmAbort,	"Are you sure to abort current process?"
-	dmlstrs_srCapAbort,	"Abort"
-	dmlstrs_srInvalidTableNameWarningFmt,	"Warning: Table name may be invalid - %s"
-	dmlstrs_srInvalidFieldNameWarningFmt,	"Warning: Field name may be invalid - %s"
-	dmlstrs_srDuplicateFieldNameWarningFmt,	"Warning: Duplicate field name - %s"
-	dmlstrs_srRearrangeObjs,	"Re-arrange objects"
-	dmlstrs_srTable,	"Table"
-	dmlstrs_srText,	"Text"
-	dmlstrs_srLink,	"Link"
-	dmlstrs_srConfirmOpenXlsAfterExport,	"Export success. Open exported file now?"
-	dmlstrs_srFilter,	"Filter"
-	dmlstrs_srFieldName,	"Field Name"
-	dmlstrs_srLogicName,	"Logic Name"
-	dmlstrs_srDataType,	"Data Type"
-	dmlstrs_srDataLength,	"Length"
-	dmlstrs_srConstraint,	"Constraint"
-	dmlstrs_srComments,	"Comments"
-	dmlstrs_srGeneratingSqlFmt,	"%d/%d Generating SQL...%s"
-	dmlstrs_srCheckingDataFmt,	"%d/%d Checking data...%s"
-	dmlstrs_srExecutingSqlFmt,	"%d/%d Executing SQL...%s"
-	dmlstrs_srConfirmSkipErrorFmt,	"Error:\r\n%s\r\nContinue?"
-	dmlstrs_srStrAborted,	"Aborted"
-	dmlstrs_srStrFinished,	"Finished"
-	dmlstrs_srRefreshingPrompt,	"Refreshing, please wait.."
-	dmlstrs_srDays,	"Days"
-	dmlstrs_srConfirmDeleteCountFmt,	"Are you sure to delete selected %d objects?"
-	dmlstrs_srNewDmlTable,	"NewTable"
-	dmlstrs_srNewDmlTbPrompt,	"Enter the name of the new table:"
-	dmlstrs_srNewDmlText,	"NewText"
-	dmlstrs_srNewDmlTextPrompt,	"Enter the content of the new text:"
-	dmlstrs_srConfirmDMLBriefMode,	"Entering brief mode may cause the position of links reset. Continue?"
-	dmlstrs_srDmlGraphStatusFmt,	"Scale:%d%% Center:%d, %d"
-	dmlstrs_srDmlSelectedCountFmt,	"Selected: %d objects"
-	dmlstrs_srImportingObjsFmt,	"%d/%d Importing...%s"
-	dmlstrs_srNewTableNameFmt,	"Table%d"
-	dmlstrs_srNewTextNameFmt,	"Text%d"
-	dmlstrs_srNewFieldNameFmt,	"Field%d"
-	dmlstrs_srNewDiagramNameFmt,	"Model%d"
-	dmlstrs_srNewTableDesc,	"Id PKInteger\r\nRid FKInteger\r\nName S"
-	dmlstrs_srConfirmDeleteSelectedNode,	"Are you sure to delete selected objects?"
-	dmlstrs_srCannotExportEmptySelection,	"Please choose objects to export"
+	DBConsts_SInvalidCalcType,	"Field '%s' cannot be a calculated or lookup field"
+	DBConsts_SFieldReadOnly,	"Field '%s' cannot be modified"
+	DBConsts_SDuplicateIndexName,	"Duplicate index name '%s'"
 	ComStrs_sTabFailRetrieve,	"Failed to retrieve tab at index %d"
 	ComStrs_sTabFailGetObject,	"Failed to get object at index %d"
 	ComStrs_sTabFailSet,	"Failed to set tab \"%s\" at index %d"
@@ -1154,12 +1154,12 @@ BEGIN
 	ComStrs_sInvalidOwner,	"Invalid owner"
 	ComStrs_sPageIndexError,	"%d is an invalid PageIndex value.  PageIndex must be between 0 and %d"
 	ComStrs_sInvalidComCtl32,	"This control requires version 4.70 or greater of COMCTL32.DLL"
-	dmlstrs_srDmlSelectedObj,	"Selected: "
-	dmlstrs_srDmlProgressFinished,	"Finish"
-	dmlstrs_srConfirmRearrangeAll,	"Are you sure to re-arrange all objects?"
-	dmlstrs_srConfirmRearrangeSelectedFmt,	"Are you sure to re-arrange selected %d objects?"
-	dmlstrs_srErrCanOnlyLinkTwoEntities,	"You can only add link between two entities"
-	dmlstrs_srConfirmDeleteObjFmt,	"Are you sure to delete object %s?"
+	DBConsts_SInvalidFieldSize,	"Invalid field size"
+	DBConsts_SInvalidFieldKind,	"Invalid FieldKind"
+	DBConsts_SUnknownFieldType,	"Field '%s' is of an unknown type"
+	DBConsts_SFieldNameMissing,	"Field name missing"
+	DBConsts_SDuplicateFieldName,	"Duplicate field name '%s'"
+	DBConsts_SFieldNotFound,	"Field '%s' not found"
 	ExtCtrls_clNameInactiveCaptionText,	"Inactive Caption Text"
 	ExtCtrls_clNameInfoBk,	"Info Background"
 	ExtCtrls_clNameInfoText,	"Info Text"
