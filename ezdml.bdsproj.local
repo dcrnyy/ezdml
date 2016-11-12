@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/10/13 17:12:08.858.pas,E:\NsUML\DML\CtMetaSqliteDb.pas=E:\NsUML\DML\CtMetaPostgreSqlDb.pas</Transaction>
+    <Transaction>2015/10/15 17:52:31.268.pas,E:\NsUML\DML\wOracleDBConfig.pas=E:\NsUML\DML\wPostgreSqlDBConfig.pas</Transaction>
+    <Transaction>2015/10/15 17:52:31.268.dfm,E:\NsUML\DML\wOracleDBConfig.dfm=E:\NsUML\DML\wPostgreSqlDBConfig.dfm</Transaction>
+    <Transaction>2015/10/17 16:45:38.191.pas,E:\NsUML\DML\uFormNewTable.pas=</Transaction>
+    <Transaction>2015/10/17 16:45:38.191.dfm,E:\NsUML\DML\uFormNewTable.dfm=</Transaction>
+    <Transaction>2015/12/25 14:28:04.341.pas,E:\NsUML\DML\uPSI_ADODB.pas=</Transaction>
+    <Transaction>2015/12/25 14:28:07.716.pas,E:\NsUML\DML\uPSI_XMLDocPS.pas=</Transaction>
+    <Transaction>2016/11/12 17:03:51.545.pas,E:\NsUML\DML\CtMetaNsdoaDb.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

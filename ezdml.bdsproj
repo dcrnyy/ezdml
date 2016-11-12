@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Delphi.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{1FEBF117-6390-4D6B-8DBC-74C812778F9F}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Delphi.Personality>
+		<Source>
+			<Source Name="MainSource">ezdml.dpr</Source>
+		</Source>
+		<FileVersion>
+			<FileVersion Name="Version">7.0</FileVersion>
+		</FileVersion>
+		<Compiler>
+			<Compiler Name="A">8</Compiler>
+			<Compiler Name="B">0</Compiler>
+			<Compiler Name="C">1</Compiler>
+			<Compiler Name="D">1</Compiler>
+			<Compiler Name="E">0</Compiler>
+			<Compiler Name="F">0</Compiler>
+			<Compiler Name="G">1</Compiler>
+			<Compiler Name="H">1</Compiler>
+			<Compiler Name="I">1</Compiler>
+			<Compiler Name="J">0</Compiler>
+			<Compiler Name="K">0</Compiler>
+			<Compiler Name="L">1</Compiler>
+			<Compiler Name="M">0</Compiler>
+			<Compiler Name="N">1</Compiler>
+			<Compiler Name="O">1</Compiler>
+			<Compiler Name="P">1</Compiler>
+			<Compiler Name="Q">0</Compiler>
+			<Compiler Name="R">0</Compiler>
+			<Compiler Name="S">0</Compiler>
+			<Compiler Name="T">0</Compiler>
+			<Compiler Name="U">0</Compiler>
+			<Compiler Name="V">1</Compiler>
+			<Compiler Name="W">0</Compiler>
+			<Compiler Name="X">1</Compiler>
+			<Compiler Name="Y">1</Compiler>
+			<Compiler Name="Z">1</Compiler>
+			<Compiler Name="ShowHints">True</Compiler>
+			<Compiler Name="ShowWarnings">True</Compiler>
+			<Compiler Name="UnitAliases">WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;</Compiler>
+			<Compiler Name="NamespacePrefix"></Compiler>
+			<Compiler Name="GenerateDocumentation">False</Compiler>
+			<Compiler Name="DefaultNamespace"></Compiler>
+			<Compiler Name="SymbolDeprecated">True</Compiler>
+			<Compiler Name="SymbolLibrary">True</Compiler>
+			<Compiler Name="SymbolPlatform">True</Compiler>
+			<Compiler Name="SymbolExperimental">True</Compiler>
+			<Compiler Name="UnitLibrary">True</Compiler>
+			<Compiler Name="UnitPlatform">True</Compiler>
+			<Compiler Name="UnitDeprecated">True</Compiler>
+			<Compiler Name="UnitExperimental">True</Compiler>
+			<Compiler Name="HResultCompat">True</Compiler>
+			<Compiler Name="HidingMember">True</Compiler>
+			<Compiler Name="HiddenVirtual">True</Compiler>
+			<Compiler Name="Garbage">True</Compiler>
+			<Compiler Name="BoundsError">True</Compiler>
+			<Compiler Name="ZeroNilCompat">True</Compiler>
+			<Compiler Name="StringConstTruncated">True</Compiler>
+			<Compiler Name="ForLoopVarVarPar">True</Compiler>
+			<Compiler Name="TypedConstVarPar">True</Compiler>
+			<Compiler Name="AsgToTypedConst">True</Compiler>
+			<Compiler Name="CaseLabelRange">True</Compiler>
+			<Compiler Name="ForVariable">True</Compiler>
+			<Compiler Name="ConstructingAbstract">True</Compiler>
+			<Compiler Name="ComparisonFalse">True</Compiler>
+			<Compiler Name="ComparisonTrue">True</Compiler>
+			<Compiler Name="ComparingSignedUnsigned">True</Compiler>
+			<Compiler Name="CombiningSignedUnsigned">True</Compiler>
+			<Compiler Name="UnsupportedConstruct">True</Compiler>
+			<Compiler Name="FileOpen">True</Compiler>
+			<Compiler Name="FileOpenUnitSrc">True</Compiler>
+			<Compiler Name="BadGlobalSymbol">True</Compiler>
+			<Compiler Name="DuplicateConstructorDestructor">True</Compiler>
+			<Compiler Name="InvalidDirective">True</Compiler>
+			<Compiler Name="PackageNoLink">True</Compiler>
+			<Compiler Name="PackageThreadVar">True</Compiler>
+			<Compiler Name="ImplicitImport">True</Compiler>
+			<Compiler Name="HPPEMITIgnored">True</Compiler>
+			<Compiler Name="NoRetVal">True</Compiler>
+			<Compiler Name="UseBeforeDef">True</Compiler>
+			<Compiler Name="ForLoopVarUndef">True</Compiler>
+			<Compiler Name="UnitNameMismatch">True</Compiler>
+			<Compiler Name="NoCFGFileFound">True</Compiler>
+			<Compiler Name="ImplicitVariants">True</Compiler>
+			<Compiler Name="UnicodeToLocale">True</Compiler>
+			<Compiler Name="LocaleToUnicode">True</Compiler>
+			<Compiler Name="ImagebaseMultiple">True</Compiler>
+			<Compiler Name="SuspiciousTypecast">True</Compiler>
+			<Compiler Name="PrivatePropAccessor">True</Compiler>
+			<Compiler Name="UnsafeType">False</Compiler>
+			<Compiler Name="UnsafeCode">False</Compiler>
+			<Compiler Name="UnsafeCast">False</Compiler>
+			<Compiler Name="OptionTruncated">True</Compiler>
+			<Compiler Name="WideCharReduced">True</Compiler>
+			<Compiler Name="DuplicatesIgnored">True</Compiler>
+			<Compiler Name="UnitInitSeq">True</Compiler>
+			<Compiler Name="LocalPInvoke">True</Compiler>
+			<Compiler Name="MessageDirective">True</Compiler>
+			<Compiler Name="CodePage"></Compiler>
+		</Compiler>
+		<Linker>
+			<Linker Name="MapFile">3</Linker>
+			<Linker Name="OutputObjs">0</Linker>
+			<Linker Name="GenerateHpps">False</Linker>
+			<Linker Name="ConsoleApp">1</Linker>
+			<Linker Name="DebugInfo">False</Linker>
+			<Linker Name="RemoteSymbols">False</Linker>
+			<Linker Name="GenerateDRC">True</Linker>
+			<Linker Name="MinStackSize">16384</Linker>
+			<Linker Name="MaxStackSize">1048576</Linker>
+			<Linker Name="ImageBase">4194304</Linker>
+			<Linker Name="ExeDescription"></Linker>
+		</Linker>
+		<Directories>
+			<Directories Name="OutputDir"></Directories>
+			<Directories Name="UnitOutputDir">dcu</Directories>
+			<Directories Name="PackageDLLOutputDir"></Directories>
+			<Directories Name="PackageDCPOutputDir"></Directories>
+			<Directories Name="SearchPath">$(BDS)\Lib\Debug\Indy9;$(BDS)\Lib\Debug\Indy10;$(BDS)\lib\Debug;.\DOA;.\MYSQL;.\lib;.\XLSReadWriteII;.\SQLITE;.\PostgreSQL</Directories>
+			<Directories Name="Packages">vcl;rtl;vclx;dbrtl;vcldb;indy;dsnap;bdertl;teeui;teedb;tee;vcldbx;dsnapcon;vclactnband;DelForEx2006</Directories>
+			<Directories Name="Conditionals">VER150</Directories>
+			<Directories Name="DebugSourceDirs"></Directories>
+			<Directories Name="UsePackages">False</Directories>
+		</Directories>
+		<Parameters>
+			<Parameters Name="RunParams"></Parameters>
+			<Parameters Name="HostApplication"></Parameters>
+			<Parameters Name="Launcher"></Parameters>
+			<Parameters Name="UseLauncher">False</Parameters>
+			<Parameters Name="DebugCWD"></Parameters>
+			<Parameters Name="Debug Symbols Search Path"></Parameters>
+			<Parameters Name="LoadAllSymbols">True</Parameters>
+			<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+		</Parameters>
+		<Language>
+			<Language Name="ActiveLang"></Language>
+			<Language Name="ProjectLang">$00000409</Language>
+			<Language Name="RootDir"></Language>
+		</Language>
+		<VersionInfo>
+			<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+			<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+			<VersionInfo Name="MajorVer">2</VersionInfo>
+			<VersionInfo Name="MinorVer">1</VersionInfo>
+			<VersionInfo Name="Release">3</VersionInfo>
+			<VersionInfo Name="Build">42</VersionInfo>
+			<VersionInfo Name="Debug">False</VersionInfo>
+			<VersionInfo Name="PreRelease">False</VersionInfo>
+			<VersionInfo Name="Special">False</VersionInfo>
+			<VersionInfo Name="Private">False</VersionInfo>
+			<VersionInfo Name="DLL">False</VersionInfo>
+			<VersionInfo Name="Locale">1033</VersionInfo>
+			<VersionInfo Name="CodePage">1252</VersionInfo>
+		</VersionInfo>
+		<VersionInfoKeys>
+			<VersionInfoKeys Name="CompanyName">huzzz@163.com</VersionInfoKeys>
+			<VersionInfoKeys Name="FileDescription">EZDML EMail:huzzz@163.com</VersionInfoKeys>
+			<VersionInfoKeys Name="FileVersion">2.1.3.42</VersionInfoKeys>
+			<VersionInfoKeys Name="InternalName">ezdml.exe</VersionInfoKeys>
+			<VersionInfoKeys Name="LegalCopyright">(c) 2007-2016 Huz(huzzz@163.com,http://www.ezdml.com)</VersionInfoKeys>
+			<VersionInfoKeys Name="LegalTrademarks">ezdml</VersionInfoKeys>
+			<VersionInfoKeys Name="OriginalFilename">ezdml.exe</VersionInfoKeys>
+			<VersionInfoKeys Name="ProductName">EZDML</VersionInfoKeys>
+			<VersionInfoKeys Name="ProductVersion">2.1</VersionInfoKeys>
+			<VersionInfoKeys Name="Comments">EZDML EMail:huzzz@163.com</VersionInfoKeys>
+		</VersionInfoKeys>
+		<Resource_DLL_Projects>
+			<Resource_DLL_Projects Name="Item0">中文(简体，中国)*$00000804*CHS*E:\NsUML\ezdml\CHS</Resource_DLL_Projects>
+		</Resource_DLL_Projects>
+		<RDP_Source_Files>
+			<RDP_Source_Files Name="Item0">wMainDml.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item1">wDmlHelp.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item2">..\DML\uFormAddCtFields.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item3">..\DML\uFormAddTbLink.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item4">..\DML\uFormCtDbLogon.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item5">..\DML\uFormCtDML.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item6">..\DML\wPostgreSqlDBConfig.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item7">..\DML\uFormCtFieldProp.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item8">..\DML\uFormCtTableProp.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item9">..\DML\uFormGenSql.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item10">..\DML\uFormImpTable.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item11">..\DML\uFrameCtFieldDef.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item12">..\DML\uFrameCtTableDef.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item13">..\DML\uFrameCtTableList.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item14">..\DML\uWaitWnd.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item15">..\DML\uFrameCtTableProp.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item16">..\DML\uFrameDML.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item17">..\DML\uFrmDML.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item18">..\DML\uColorStyles.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item19">..\DML\PSDebug\dlgConfirmReplace.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item20">..\DML\PSDebug\dlgSearchText.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item21">..\DML\PSDebug\ide_editor.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item22">..\DML\PSDebug\uFrmGotoLine.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item23">..\DML\PSDebug\dlgReplaceText.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item24">..\DML\uFormDmlSearch.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item25">..\DML\uDMLSqlEditor.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item26">FindHexDlg.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item27">..\DML\wOracleDBConfig.dfm</RDP_Source_Files>
+			<RDP_Source_Files Name="Item28">ezdml.drc</RDP_Source_Files>
+		</RDP_Source_Files>
+	</Delphi.Personality>
+	<StarTeamAssociation></StarTeamAssociation>
+	<StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
+</BorlandProject>

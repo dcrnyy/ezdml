@@ -1,0 +1,197 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{1FEBF117-6390-4D6B-8DBC-74C812778F9F}</ProjectGuid>
+			<MainSource>ezdml.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_DependencyCheckOutputName>ezdml.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_MapFile>3</DCC_MapFile>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_UnitSearchPath>$(BDS)\lib\Debug;$(BDS)\Lib\Debug\Indy9;E:\NsUML\ezdml\DOA;E:\NsUML\ezdml\MYSQL;E:\NsUML\DML;E:\IRIMS\Components\DevExpress\ExpressBars 5\Sources;E:\IRIMS\Components\DevExpress\ExpressCommon Library\Sources;E:\IRIMS\Components\DevExpress\ExpressDataController\Sources;E:\IRIMS\Components\DevExpress\ExpressEditors Library\Sources;E:\IRIMS\Components\DevExpress\ExpressEditors Library 5\Sources;E:\IRIMS\Components\DevExpress\ExpressExport Library\Sources;E:\IRIMS\Components\DevExpress\ExpressGDI+ Library\Sources;E:\IRIMS\Components\DevExpress\ExpressInplaceEditors\Sources;E:\IRIMS\Components\DevExpress\ExpressInspector\Sources;E:\IRIMS\Components\DevExpress\ExpressLibrary\Sources;E:\IRIMS\Components\DevExpress\ExpressMemData\Sources;E:\IRIMS\Components\DevExpress\ExpressNavBar\Sources;E:\IRIMS\Components\DevExpress\ExpressPageControl 2\Sources;E:\IRIMS\Components\DevExpress\ExpressQuantumGrid\Sources;E:\IRIMS\Components\DevExpress\ExpressQuantumGrid 5\Sources;E:\IRIMS\Components\DevExpress\ExpressQuantumTreeList 4\Sources;E:\IRIMS\Components\DevExpress\XP Theme Manager\Sources;C:\Program Files\Raize\RC4\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_K>false</DCC_K>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="ezdml.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<None Include="dict.txt">
+				<ContainerId>File</ContainerId>
+			</None>
+			<None Include="readme.txt">
+				<ContainerId>File</ContainerId>
+			</None>
+			<DCCReference Include="wMainDml.pas">
+				<Form>frmMainDml</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\Ctobj\CtObjSerialer.pas"/>
+			<DCCReference Include="..\DML\Ctobj\CTMetaData.pas"/>
+			<DCCReference Include="..\DML\Ctobj\WindowFuncs.pas"/>
+			<DCCReference Include="wDmlHelp.pas">
+				<Form>frmHelpAbout</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\CtMetaTable.pas"/>
+			<DCCReference Include="..\DML\CtMetaSqlsvrDb.pas"/>
+			<DCCReference Include="..\DML\Ctobj\CtObjXmlSerial.pas"/>
+			<DCCReference Include="..\DML\uFormAddCtFields.pas">
+				<Form>frmAddCtFields</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFormAddTbLink.pas">
+				<Form>frmAddTbLink</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFormCtDbLogon.pas">
+				<Form>frmLogonCtDB</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFormCtDML.pas">
+				<Form>frmCtDML</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\wOracleDBConfig.pas">
+				<Form>frmOraDBConfig</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFormCtFieldProp.pas">
+				<Form>frmCtMetaFieldProp</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFormCtTableProp.pas">
+				<Form>frmCtTableProp</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFormGenSql.pas">
+				<Form>frmCtGenSQL</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFormImpTable.pas">
+				<Form>frmImportCtTable</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFormNewTable.pas">
+				<Form>frmNewTable</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFrameCtFieldDef.pas">
+				<Form>FrameCtFieldDef</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFrameCtTableDef.pas">
+				<Form>FrameCtTableDef</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFrameCtTableList.pas">
+				<Form>FrameCtTableList</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\DML\uWaitWnd.pas">
+				<Form>frmWaitWnd</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFrameCtTableProp.pas">
+				<Form>FrameCtTableProp</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFrameDML.pas">
+				<Form>FrameDML</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="..\DML\uFrmDML.pas">
+				<Form>frmDML</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\dmlstrs.pas"/>
+			<DCCReference Include="ezdmlstrs.pas"/>
+			<DCCReference Include="..\DML\DMLObjs.pas"/>
+			<DCCReference Include="..\DML\uColorStyles.pas">
+				<Form>frmColorStyles</Form>
+			</DCCReference>
+			<DCCReference Include="..\DML\AutoNameCapitalize.pas"/>
+			<DCCReference Include="..\DML\CtMetaMysqlDb.pas"/>
+			<DCCReference Include="..\DML\XLSfile.pas"/>
+			<DCCReference Include="..\DML\CtMetaAdoDb.pas"/>
+			<DCCReference Include="..\DML\CtMetaOracleDb.pas"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">ezdml.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<Language>
+						<Language Name="ProjectLang">$00000409</Language>
+					</Language>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">5</VersionInfo>
+						<VersionInfo Name="Release">3</VersionInfo>
+						<VersionInfo Name="Build">212</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1033</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName">huzzz@163.com</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">EZDML EMail:huzzz@163.com</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.5.3.212</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName">ezdml.exe</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalCopyright">(c) 2007-2010 Huz(huzzz@163.com)</VersionInfoKeys>
+						<VersionInfoKeys Name="LegalTrademarks">ezdml</VersionInfoKeys>
+						<VersionInfoKeys Name="OriginalFilename">ezdml.exe</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductName">EZDML</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">1.5</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments">EZDML EMail:huzzz@163.com</VersionInfoKeys>
+					</VersionInfoKeys>
+					<Resource_DLL_Projects>
+						<Resource_DLL_Projects Name="Item0">中文(简体，中国)*$00000804*CHS*E:\NsUML\ezdml\CHS</Resource_DLL_Projects>
+					</Resource_DLL_Projects>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
